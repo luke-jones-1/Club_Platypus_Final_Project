@@ -14,7 +14,7 @@ import java.util.UUID;
 
 
 import static spark.Spark.*;
-import static spark.route.HttpMethod.get;
+//import static spark.route.HttpMethod.get;
 
 public class Main {
 
@@ -38,7 +38,7 @@ public class Main {
 
         //Sign in methods
 
-        get("/", (req, res) -> ( "Hello, world!" );
+        get("/", (req, res) -> "Hello World");
 
 
 
