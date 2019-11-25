@@ -81,18 +81,6 @@ class Sql2oModelTest {
     }
 
     @org.junit.jupiter.api.Test
-    void addComment() {
-        conn.createQuery("insert into comments(comment_id, post_id, comment) VALUES (:comment_id, :post_id, 'Looking good')")
-                .addParameter("comment_id", comment_id)
-                .addParameter("post_id", id)
-                .executeUpdate();
-        String comments = model.gettingComments(id);
-        List<Comment> comment = new ArrayList<>();
-        comment.add(new Comment(id, comment_id, "Looking good"));
-        assertEquals( comments, "[Looking good]");
-    }
-
-    @org.junit.jupiter.api.Test
     void addLike() {
         model.addLike(id.toString());
         List<Integer> likes = conn.createQuery("select likes from posts where post_id =:id")
@@ -108,14 +96,6 @@ class Sql2oModelTest {
                 .addParameter("id", id.toString())
                 .executeAndFetch(String.class);
         assertTrue(post_id.isEmpty());
-    }
-
-    @org.junit.jupiter.api.Test
-    void deleteComment() {
-        model.postComment("This is a comment", id.toString());
-        List<Comment> comments = model.getAllComments();
-        model.deleteComment(comments.get(0).comment_id.toString());
-        assertTrue(model.getAllComments().isEmpty());
     }
 
     @org.junit.jupiter.api.Test
