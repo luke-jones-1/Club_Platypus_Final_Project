@@ -23,10 +23,14 @@ public class Main {
 
         port(getHerokuAssignedPort());
 
-        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5432/cgi_platypi", null, null).load();
+        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://\n" +
+                "ec2-23-21-70-39.compute-1.amazonaws.com:5432/cgi_platypi", "ubzionusddizka",
+                "09c8b457c4bb87d1a8d63baf2cbf2876c46857bcc2cc762729cb6a5ab036e110").load();
         flyway.migrate();
 
-        Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/cgi_platypi", null, null, new PostgresQuirks() {
+        Sql2o sql2o = new Sql2o("jdbc:postgresql://\n" +
+                "ec2-23-21-70-39.compute-1.amazonaws.com:5432/cgi_platypi", "ubzionusddizka",
+                "09c8b457c4bb87d1a8d63baf2cbf2876c46857bcc2cc762729cb6a5ab036e110", new PostgresQuirks() {
             {
                 // make sure we use default UUID converter.
                 converters.put(UUID.class, new UUIDConverter());
