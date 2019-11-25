@@ -210,3 +210,8 @@ Was expecting one of:
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
 	at java.base/java.lang.Thread.run(Thread.java:830)
+2019-11-25 14:21:51,134 - ResourceManager : unable to find resource 'templates/sign-in.vtl' in any resource loader.
+2019-11-25 14:21:51,572 - ResourceManager : unable to find resource 'templates/sign-in.vtl' in any resource loader.
+2019-11-25 14:22:01,993 - ResourceManager : unable to find resource 'templates/sign-up.vtl' in any resource loader.
+2019-11-25 14:22:01,993 - ResourceManager : unable to find resource 'templates/sign-up.vtl' in any resource loader.
+2019-11-25 14:34:37,057 - ResourceManager : unable to find resource 'templates/sign-in.vtl' in any resource loader.

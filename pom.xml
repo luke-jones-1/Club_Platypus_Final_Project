@@ -6,7 +6,7 @@
 
     <groupId>com.cgi.platypi</groupId>
     <artifactId>cgi_platypi</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <build>
         <plugins>
             <plugin>
