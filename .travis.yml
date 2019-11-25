@@ -1,0 +1,10 @@
+language: java
+jdk: openjdk13
+services: postgresql
+before_install: psql -c 'CREATE DATABASE acebook_test;' -U postgres
+install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -V
+script: mvn clean test
+after_success: bash <(curl -s https://codecov.io/bash)
+env:
+  global:
+    - CODECOV_TOKEN=b9222ee2-bb39-4262-94d4-52926dd25dba

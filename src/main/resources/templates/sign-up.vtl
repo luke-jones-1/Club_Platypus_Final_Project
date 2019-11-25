@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+     <style>
+     .jumbotron {background-color: #1A75FF; color: white;}
+     h1 {font-family: "Times New Roman", Times, serif;}
+     p{font-family: "Times New Roman", Times, serif;}
+
+
+
+     .container-fluid {
+      padding:40px;
+      }
+
+     .form {
+     		margin: 0 auto;
+     		width: 150px;
+     		font-family: "Times New Roman", Times, serif;
+     	}
+     	form label{
+     		display: inline-block;
+     		text-align: right;
+     		float: left;
+     	}
+     	form input{
+     		display: inline-block;
+     		text-align: left;
+     		float: right;
+     	}
+
+     </style>
+    </head>
+    <body>
+
+
+<div class="jumbotron">
+<h1>Sign up for Acebook</h1>
+<p>Fill in your details to register</p>
+</div>
+<div class="container-fluid">
+<div class="form">
+
+        <form action="/sign-up" method="post">
+        First Name: <input type="text" name="first_name"/>
+        <br>
+        Last Name: <input type="text" name="last_name"/>
+        <br>
+        Email address: <input type="text" name="email"/>
+        <br>
+        Password: <input type="text" name="password"/>
+        <br>
+
+        <button type="submit" class = "btn btn-success">
+            <span class="glyphicon glyphicon-save" aria-hidden="true">
+        </span>Sign up</button>
+
+        </form>
+        </div>
+        </div>
+    </body>
+</html>
