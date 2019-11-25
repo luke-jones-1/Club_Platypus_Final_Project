@@ -35,36 +35,6 @@ public class Main {
         Model model = new Sql2oModel(sql2o);
         UserModel userModel = new Sql2oModel(sql2o);
 
-        Spark.get("/posts", (req, res) -> {
-            HashMap posts = new HashMap();
-            posts.put("posts", model.getAllPosts());
-
-            return new ModelAndView(posts, "templates/posts.vtl");
-        }, new VelocityTemplateEngine());
-
-
-        Spark.get("/newpost", (req, res) -> {
-            return new ModelAndView(new HashMap<>(),"templates/newPost.vtl");
-        }, new VelocityTemplateEngine());
-
-        post("/newpost", (request, response) -> {
-            String title;
-            String content;
-            title = request.queryParams("title");
-            content = request.queryParams("content");
-            response.redirect("/posts");
-            UUID id = model.createPost(title, content);
-            return null;
-        });
-
-        post("/likepost", (request, response) -> {
-            String id;
-            id = request.queryParams("id");
-            model.addLike(id);
-            response.redirect("/posts");
-            return null;
-        });
-
         //Sign in methods
 
         Spark.get("/", (req, res) -> {
@@ -107,16 +77,7 @@ public class Main {
             }
             return null;
         });
-
-        post("/deletepost", (request, response) -> {
-            String post_id = request.queryParams("post_id");
-
-            model.deletePost(post_id);
-
-            response.redirect("/posts");
-            return null;
-        });
-    };
+    }
 
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();

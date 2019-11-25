@@ -1,7 +1,7 @@
 language: java
 jdk: openjdk13
 services: postgresql
-before_install: psql -c 'CREATE DATABASE acebook_test;' -U postgres
+before_install: psql -c 'CREATE DATABASE cgi_platypi_test;' -U postgres
 install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -V
 script: mvn clean test
 after_success: bash <(curl -s https://codecov.io/bash)
