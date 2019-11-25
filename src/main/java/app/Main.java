@@ -14,6 +14,7 @@ import java.util.UUID;
 
 
 import static spark.Spark.*;
+import static spark.route.HttpMethod.get;
 
 public class Main {
 
@@ -37,10 +38,8 @@ public class Main {
 
         //Sign in methods
 
-        Spark.get("/", (req, res) -> {
-            HashMap users = new HashMap();
-            return new ModelAndView(users, "templates/sign-in.vtl");
-        }, new VelocityTemplateEngine());
+        get("/", (req, res) -> ( "Hello, world!" );
+
 
 
         post("/sign-in", (req,res) -> {
