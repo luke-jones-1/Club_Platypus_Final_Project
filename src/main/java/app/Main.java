@@ -38,7 +38,6 @@ public class Main {
         Spark.get("/posts", (req, res) -> {
             HashMap posts = new HashMap();
             posts.put("posts", model.getAllPosts());
-            posts.put("comments", model.getAllComments());
 
             return new ModelAndView(posts, "templates/posts.vtl");
         }, new VelocityTemplateEngine());
@@ -106,25 +105,6 @@ public class Main {
                 userModel.createUser(first_name, last_name, password, email);
                 res.redirect("/posts");
             }
-            return null;
-        });
-
-        post("/postcomment", (request, response) -> {
-           String comment = request.queryParams("comment");
-           String post_id = request.queryParams("post_id");
-
-           model.postComment(comment, post_id);
-
-           response.redirect("/posts");
-           return null;
-        });
-
-        post("/deletecomment", (request, response) -> {
-            String comment_id = request.queryParams("comment_id");
-
-            model.deleteComment(comment_id);
-
-            response.redirect("/posts");
             return null;
         });
 

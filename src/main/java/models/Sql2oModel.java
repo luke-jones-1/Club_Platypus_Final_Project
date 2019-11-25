@@ -83,51 +83,6 @@ public class Sql2oModel implements Model, UserModel {
         }
     }
 
-    @Override
-    public String gettingComments(UUID post_id) {
-        try (Connection conn = sql2o.open()) {
-            List<String> comments = conn.createQuery("SELECT comment FROM comments WHERE post_id =:id")
-                    .addParameter("id", post_id.toString())
-                    .executeAndFetch(String.class);
-            String commentsConvert;
-            commentsConvert = String.valueOf(comments);
-            System.out.println(commentsConvert);
-            return commentsConvert;
-        }
-    }
-
-    @Override
-    public void postComment(String comment, String post_id) {
-        try (Connection conn = sql2o.beginTransaction()) {
-
-            UUID commentUuid = UUID.randomUUID();
-            conn.createQuery("insert into comments(comment_id, post_id, comment) VALUES (:comment_id, :post_id, :comment)")
-                    .addParameter("comment_id", commentUuid)
-                    .addParameter("post_id", post_id)
-                    .addParameter("comment", comment)
-                    .executeUpdate();
-            conn.commit();
-        }
-    }
-
-    @Override
-    public List<Comment> getAllComments() {
-        try (Connection conn = sql2o.open()) {
-            List<Comment> comments = conn.createQuery("SELECT * FROM comments")
-                    .executeAndFetch(Comment.class);
-            return comments;
-        }
-    }
-
-    @Override
-    public void deleteComment(String comment_id) {
-        try (Connection conn = sql2o.open()) {
-            conn.createQuery("DELETE FROM comments WHERE comment_id =:id")
-                    .addParameter("id", comment_id)
-                    .executeUpdate();
-        }
-    }
-
     public Boolean verifyUser(String email, String password) {
         boolean correct_password = false;
 

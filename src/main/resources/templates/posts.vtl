@@ -96,46 +96,6 @@
                             $p.content
                         </p>
                     </div>
-                    <div class="card-body">
-                    <div class="page-header">
-                        Comments
-                    </div>
-                        #foreach($c in $comments)
-                            #if($c.post_id == $p.post_id)
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-8">
-
-                                           <div class="comments-list">
-                                               <div class="media">
-                                                    <a class="media-left">
-                                                      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                                    </a>
-
-                                                    <div class="media-body">
-
-                                                      <h5 class="media-heading user_name">@User</h5>
-                                                      $c.comment
-
-                                                    </div>
-
-                                                    <a class="media-right">
-                                                      <form action="/deletecomment" method="post">
-                                                          <input type="hidden" name="comment_id" value=$c.comment_id>
-                                                          <button type="submit" class="btn-danger btn-xs">
-                                                          <span class="glyphicon glyphicon-trash" aria-hidden="true">
-                                                          </span> Delete
-                                                          </button>
-                                                      </form>
-                                                    </a>
-                                               </div>
-                                           </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            #end
-                        #end
-                    </div>
                     <div class="card-footer">
                         <form action="/likepost" method="post">
                             <input type="hidden" name="likecount" value=$p.likes>
