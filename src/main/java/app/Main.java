@@ -61,6 +61,10 @@ public class Main {
             return new ModelAndView(room, "templates/room.vtl");
         }, new VelocityTemplateEngine());
 
+        get("/sign-in", (req, res) -> {
+            HashMap signIn = new HashMap();
+            return new ModelAndView(signIn, "templates/sign_in.vtl");
+        }, new VelocityTemplateEngine());
 
 
         post("/sign-in", (req,res) -> {
@@ -80,7 +84,7 @@ public class Main {
 
         Spark.get("/sign-up", (req, res) -> {
             HashMap users = new HashMap();
-            return new ModelAndView(users, "templates/sign-up.vtl");
+            return new ModelAndView(users, "templates/sign_up.vtl");
         }, new VelocityTemplateEngine());
 
         post("/sign-up", (req,res) -> {
