@@ -8,17 +8,14 @@ import org.sql2o.converters.UUIDConverter;
 import org.sql2o.quirks.PostgresQuirks;
 import spark.ModelAndView;
 import spark.Spark;
-
-import java.util.HashMap;
-import java.util.UUID;
-
-
+import java.util.*;
 import static spark.Spark.*;
 //import static spark.route.HttpMethod.get;
 
 public class Main {
 
     public static void main(String[] args) {
+
         BasicConfigurator.configure();
 
         port(getHerokuAssignedPort());
@@ -87,4 +84,5 @@ public class Main {
         }
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
+
 }
