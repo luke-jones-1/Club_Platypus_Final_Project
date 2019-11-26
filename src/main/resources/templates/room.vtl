@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200i&display=swap" rel="stylesheet">
+        <style>
+
+            #header.jumbotron{
+              font-family: 'Roboto Slab', serif;
+              background-color: turquoise;
+            }
+
+            #chatLog.jumbotron{
+              background-color: #DAE7E8;
+
+            }
+
+            #chatLogTitle{
+              font-family: 'Roboto Slab', serif;
+            }
+
+            .content {
+              font-family: 'Roboto Slab', serif;
+            }
+
+              table, td {
+                padding: 20px;
+              }
+
+                  .avatar{
+                    width: 200px;
+                  }
+                  .content{
+                    width: 500px;
+                  }
+
+            #chatControls.jumbotron{
+                background-color: #67BEC4;
+            }
+
+            #message{
+              height: 30px;
+              width: 200px;
+              font-family: 'Roboto Slab', serif;
+            }
+
+            #submitButton{
+                font-family: 'Roboto Slab', serif;
+            }
+
+
+
+
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Room 1</title>
+    </head>
+    <body>
+        <div class="jumbotron" id="header">
+            <h1>CGI Platypi</h1>
+            <p>Room 1</p>
+        </div>
+        <div class="jumbotron" id="chatLog">
+          <h2 id="chatLogTitle">Chat log:</h2>
+          <table>
+            <tr>
+              <td class="avatar"><img src="/Platypus.png" width="114.6" height="53.8"></td>
+              <td class="content"><em>Username:</em><br>This is where the post text is gonna go</td>
+            </tr>
+            <tr>
+              <td class="avatar"><img src="/Platypus.png" width="114.6" height="53.8"></td>
+              <td class="content"><em>Username:</em><br>This is where the post text is gonna go</td>
+            </tr>
+            <tr>
+              <td class="avatar"><img src="/Platypus.png" width="114.6" height="53.8"></td>
+              <td class="content"><em>Will-Bath:</em><br>I'm a post lol</td>
+            </tr>
+            <tr>
+              <td class="avatar"><img src="/Platypus.png" width="114.6" height="53.8"></td>
+              <td class="content"><em>Will-Bath:</em><br>I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol</td>
+            </tr>
+          </table>
+        </div>
+        <div class="jumbotron" id="chatControls">
+                <input id="message" placeholder="Type your message">
+                <button type="submit" class="btn btn-secondary btn-sm" id="submitButton">
+                  Send message
+                </button>
+        </div>
+        <ul id="userlist"> <!-- Built by JS --> </ul>
+        <div id="chat">    <!-- Built by JS --> </div>
+        <script src="websocketDemo.js"></script>
+    </body>
+</html>

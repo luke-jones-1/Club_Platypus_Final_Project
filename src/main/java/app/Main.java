@@ -8,18 +8,17 @@ import org.sql2o.converters.UUIDConverter;
 import org.sql2o.quirks.PostgresQuirks;
 import spark.ModelAndView;
 import spark.Spark;
-
-import java.util.HashMap;
-import java.util.UUID;
-
-
+import java.util.*;
 import static spark.Spark.*;
 
 public class Main {
 
     public static void main(String[] args) {
+
         BasicConfigurator.configure();
 
+        staticFileLocation("/images");
+        System.out.println("This is the latest");
         port(getHerokuAssignedPort());
 
         String dbHost = "localhost";
@@ -49,12 +48,19 @@ public class Main {
         Model model = new Sql2oModel(sql2o);
         UserModel userModel = new Sql2oModel(sql2o);
 
-        //Sign in methods
+        staticFileLocation("/public");
+        webSocket("/chat", PaddleChatWebSocketHandler.class);
+        init();
 
-        get("/", (req, res) -> "Hello World");
+        get("/room", (req, res) -> {
+            HashMap room = new HashMap();
+            return new ModelAndView(room, "templates/room.vtl");
+        }, new VelocityTemplateEngine());
 
-
-
+        get("/sign-in", (req, res) -> {
+            HashMap signIn = new HashMap();
+            return new ModelAndView(signIn, "templates/sign_in.vtl");
+        }, new VelocityTemplateEngine());
         post("/sign-in", (req,res) -> {
 
             String password = req.queryParams("password");
@@ -72,7 +78,7 @@ public class Main {
 
         Spark.get("/sign-up", (req, res) -> {
             HashMap users = new HashMap();
-            return new ModelAndView(users, "templates/sign-up.vtl");
+            return new ModelAndView(users, "templates/sign_up.vtl");
         }, new VelocityTemplateEngine());
 
         post("/sign-up", (req,res) -> {
@@ -98,4 +104,5 @@ public class Main {
         }
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
+
 }
