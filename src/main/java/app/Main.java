@@ -47,7 +47,9 @@ public class Main {
         UserModel userModel = new Sql2oModel(sql2o);
 
         //Sign in methods
-
+        staticFileLocation("/public");
+        webSocket("/chat", PaddleChatWebSocketHandler.class);
+        init();
 
         post("/sign-in", (req,res) -> {
 

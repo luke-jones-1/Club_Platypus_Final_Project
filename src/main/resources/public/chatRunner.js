@@ -1,4 +1,6 @@
-var webSocket = new WebSocket("ws://" + location.hostname + ":" + location.port + "/PaddleChat/");
+console.log(location.hostname);
+console.log(location.port);
+var webSocket = new WebSocket("ws://" + location.hostname + ":" + location.port + "/chat");
 webSocket.onmessage = function (msg) { updateChat(msg); };
 webSocket.onclose = function () { alert("WebSocket connection closed")};
 
