@@ -17,6 +17,8 @@ public class Main {
 
         BasicConfigurator.configure();
 
+        staticFileLocation("/images");
+        System.out.println("This is the latest");
         port(getHerokuAssignedPort());
 
         String dbHost = "localhost";
@@ -46,10 +48,14 @@ public class Main {
         Model model = new Sql2oModel(sql2o);
         UserModel userModel = new Sql2oModel(sql2o);
 
-        //Sign in methods
         staticFileLocation("/public");
         webSocket("/chat", PaddleChatWebSocketHandler.class);
         init();
+
+        get("/room", (req, res) -> {
+            HashMap room = new HashMap();
+            return new ModelAndView(room, "templates/room.vtl");
+        }, new VelocityTemplateEngine());
 
         post("/sign-in", (req,res) -> {
 
