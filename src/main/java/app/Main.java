@@ -17,8 +17,7 @@ public class Main {
 
         BasicConfigurator.configure();
 
-        staticFileLocation("/images");
-        System.out.println("This is the latest");
+        //staticFileLocation("/images");
         port(getHerokuAssignedPort());
 
         String dbHost = "localhost";
