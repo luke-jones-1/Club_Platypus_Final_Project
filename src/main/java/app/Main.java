@@ -8,11 +8,7 @@ import org.sql2o.converters.UUIDConverter;
 import org.sql2o.quirks.PostgresQuirks;
 import spark.ModelAndView;
 import spark.Spark;
-
-import java.util.HashMap;
-import java.util.UUID;
-
-
+import java.util.*;
 import static spark.Spark.*;
 
 public class Main {
@@ -52,9 +48,9 @@ public class Main {
         Model model = new Sql2oModel(sql2o);
         UserModel userModel = new Sql2oModel(sql2o);
 
-        //Sign in methods
-
-        get("/", (req, res) -> "Hello World");
+        staticFileLocation("/public");
+        webSocket("/chat", PaddleChatWebSocketHandler.class);
+        init();
 
         get("/room", (req, res) -> {
             HashMap room = new HashMap();
@@ -65,8 +61,6 @@ public class Main {
             HashMap signIn = new HashMap();
             return new ModelAndView(signIn, "templates/sign_in.vtl");
         }, new VelocityTemplateEngine());
-
-
         post("/sign-in", (req,res) -> {
 
             String password = req.queryParams("password");
@@ -110,4 +104,5 @@ public class Main {
         }
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
+
 }
