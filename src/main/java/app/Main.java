@@ -37,9 +37,6 @@ public class Main {
 
         //Sign in methods
 
-        get("/", (req, res) -> "Hello World");
-
-
 
         post("/sign-in", (req,res) -> {
 

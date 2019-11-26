@@ -17,8 +17,8 @@ public class PaddleChat {
     static int nextUserNumber = 1;
 
     public static void main(String[] args) {
-        staticFileLocation("/Public");
-        webSocket("/chat", PaddleChatWebSocketHandler.class);
+        staticFileLocation("/public");
+        webSocket("/PaddleChat", PaddleChatWebSocketHandler.class);
         init();
     };
 
