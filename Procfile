@@ -1,1 +1,1 @@
-web: java -jar target/cgi_platypi-1.0-jar-with-dependencies.jar "ec2-23-21-70-39.compute-1.amazonaws.com" "dbsv5al2b7e771" "ubzionusddizka" "09c8b457c4bb87d1a8d63baf2cbf2876c46857bcc2cc762729cb6a5ab036e110"
+web: java -jar target/cgi_platypi-1.0-jar-with-dependencies.jar
