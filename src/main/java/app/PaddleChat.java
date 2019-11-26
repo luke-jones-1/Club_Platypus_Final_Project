@@ -41,6 +41,7 @@ public class PaddleChat {
 
     private static String createHtmlMessageFromSender(String sender, String message) {
         return article().with(
+//                img(src=""),
                 b(sender + ":"),
                 p(message),
                 span().withClass("timestamp").withText(new SimpleDateFormat("HH:mm:ss").format(new Date()))
