@@ -21,7 +21,7 @@
             }
 
             .content {
-              font-family: 'Titillium Web', sans-serif;
+              font-family: 'Roboto Slab', serif;
             }
 
               table, td {
@@ -42,7 +42,13 @@
             #message{
               height: 30px;
               width: 200px;
+              font-family: 'Roboto Slab', serif;
             }
+
+            #submitButton{
+                font-family: 'Roboto Slab', serif;
+            }
+
 
 
 
@@ -53,32 +59,32 @@
     <body>
         <div class="jumbotron" id="header">
             <h1>CGI Platypi</h1>
-            <h2>Room 1</h2>
+            <p>Room 1</p>
         </div>
         <div class="jumbotron" id="chatLog">
           <h2 id="chatLogTitle">Chat log:</h2>
           <table>
             <tr>
-              <td class="avatar"><img src="CGI Platypi.png" width="114.6" height="53.8"></td>
+              <td class="avatar"><img src="/Platypus.png" width="114.6" height="53.8"></td>
               <td class="content"><em>Username:</em><br>This is where the post text is gonna go</td>
             </tr>
             <tr>
-              <td class="avatar"><img src="CGI Platypi.png" width="114.6" height="53.8"></td>
+              <td class="avatar"><img src="/Platypus.png" width="114.6" height="53.8"></td>
               <td class="content"><em>Username:</em><br>This is where the post text is gonna go</td>
             </tr>
             <tr>
-              <td class="avatar"><img src="CGI Platypi.png" width="114.6" height="53.8"></td>
+              <td class="avatar"><img src="/Platypus.png" width="114.6" height="53.8"></td>
               <td class="content"><em>Will-Bath:</em><br>I'm a post lol</td>
             </tr>
             <tr>
-              <td class="avatar"><img src="CGI Platypi.png" width="114.6" height="53.8"></td>
+              <td class="avatar"><img src="/Platypus.png" width="114.6" height="53.8"></td>
               <td class="content"><em>Will-Bath:</em><br>I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol</td>
             </tr>
           </table>
         </div>
         <div class="jumbotron" id="chatControls">
                 <input id="message" placeholder="Type your message">
-                <button type="submit" class="btn btn-primary btn-sm">
+                <button type="submit" class="btn btn-secondary btn-sm" id="submitButton">
                   Send message
                 </button>
         </div>
