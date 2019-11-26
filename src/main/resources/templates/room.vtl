@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+        <style>
+            .jumbotron{
+                background-color: green;
+            }
+
+            #chatControls{
+                background-color: brown;
+            }
+
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Room 1</title>
+    </head>
+    <body>
+        <div class="jumbotron">
+            <h1>CGI Platypi - Room 1</h1>
+        </div>
+        <section id="makeItFloat">
+            <div class="jumbotron" id="chatControls">
+                    <input id="message" placeholder="Type your message">
+                    <button id="send">Send</button>
+            </div>
+        </section>
+        <ul id="userlist"> <!-- Built by JS --> </ul>
+        <div id="chat">    <!-- Built by JS --> </div>
+        <script src="websocketDemo.js"></script>
+    </body>
+</html>
