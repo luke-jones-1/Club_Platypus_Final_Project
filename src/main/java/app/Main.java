@@ -14,7 +14,6 @@ import java.util.UUID;
 
 
 import static spark.Spark.*;
-//import static spark.route.HttpMethod.get;
 
 public class Main {
 
@@ -23,12 +22,24 @@ public class Main {
 
         port(getHerokuAssignedPort());
 
-        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://ec2-23-21-70-39.compute-1.amazonaws.com:5432/dbsv5al2b7e771", "ubzionusddizka",
-                "09c8b457c4bb87d1a8d63baf2cbf2876c46857bcc2cc762729cb6a5ab036e110").load();
+        String dbHost = "localhost";
+        String dbName = "cgi_platypi";
+        String dbUser = null;
+        String dbPass = null;
+
+        if ( args.length != 0 ){
+            dbHost = args[0];
+            dbName = args[1];
+            dbUser = args[2];
+            dbPass = args[3];
+        }
+
+        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://"+dbHost+":5432/"+dbName, dbUser,
+                dbPass).load();
         flyway.migrate();
 
-        Sql2o sql2o = new Sql2o("jdbc:postgresql://ec2-23-21-70-39.compute-1.amazonaws.com:5432/dbsv5al2b7e771", "ubzionusddizka",
-                "09c8b457c4bb87d1a8d63baf2cbf2876c46857bcc2cc762729cb6a5ab036e110", new PostgresQuirks() {
+        Sql2o sql2o = new Sql2o("jdbc:postgresql://" + dbHost + ":5432/" + dbName , dbUser,
+                dbPass, new PostgresQuirks() {
             {
                 // make sure we use default UUID converter.
                 converters.put(UUID.class, new UUIDConverter());
