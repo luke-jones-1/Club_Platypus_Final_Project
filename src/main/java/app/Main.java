@@ -18,8 +18,11 @@ import static spark.Spark.*;
 public class Main {
 
     public static void main(String[] args) {
+
         BasicConfigurator.configure();
 
+        staticFileLocation("/images");
+        System.out.println("This is the latest");
         port(getHerokuAssignedPort());
 
         String dbHost = "localhost";
@@ -52,6 +55,11 @@ public class Main {
         //Sign in methods
 
         get("/", (req, res) -> "Hello World");
+
+        get("/room", (req, res) -> {
+            HashMap room = new HashMap();
+            return new ModelAndView(room, "templates/room.vtl");
+        }, new VelocityTemplateEngine());
 
 
 
