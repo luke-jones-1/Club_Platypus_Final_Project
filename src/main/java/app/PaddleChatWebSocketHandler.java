@@ -8,10 +8,14 @@ import org.eclipse.jetty.websocket.api.annotations.*;
 public class PaddleChatWebSocketHandler {
     private String sender, msg;
 
+    // gets called when web page loaded
     @OnWebSocketConnect
     public void onConnect(Session user) throws Exception {
-        String username = "User" + PaddleChat.nextUserNumber++;
-        PaddleChat.userUsernameMap.put(user, username);
+//        System.out.println("this is the session user:");
+//        System.out.println(user);
+//        System.out.println("this is the end of session user");
+        String username = "User" + PaddleChat.nextUserNumber++; // temporary username definition
+        PaddleChat.userUsernameMap.put(user, username); // adds an element to userUsernameMap
         PaddleChat.broadcastMessage(sender = "Server", msg = (username + " joined the Paddle"));
     }
 
