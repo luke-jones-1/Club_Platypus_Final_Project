@@ -51,6 +51,11 @@ public class Main {
         webSocket("/chat", PaddleChatWebSocketHandler.class);
         init();
 
+        get("/index", (req, res) -> {
+            HashMap index = new HashMap();
+            return new ModelAndView(index, "templates/index.vtl");
+        }, new VelocityTemplateEngine());
+
         get("/room", (req, res) -> {
             HashMap room = new HashMap();
             return new ModelAndView(room, "templates/room.vtl");
