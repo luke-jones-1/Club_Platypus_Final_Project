@@ -37,7 +37,7 @@ function updateChat(msg) {
     insert("chat", data.userMessage); // calls insert function on parsed data passed though websocket from paddlechat
     id("userlist").innerHTML = ""; // wipes the userlist
     data.userlist.forEach(function (user) {
-    insert("userlist", "<li>" + user + "</li>")
+    insert("userlist", user + "    ")
     });
     // iterates through new user list and adds new users while not adding the old ones
 }
