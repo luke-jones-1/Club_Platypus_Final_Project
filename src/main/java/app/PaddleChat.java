@@ -49,7 +49,7 @@ public class PaddleChat {
                 b(sender + ":"), // <b>user1:</b>
                 p(message), // <p>hello</p>
                 span().withClass("timestamp").withText(new SimpleDateFormat("HH:mm:ss").format(new Date())) // <span class="timestamp">HH:mm:ss</span>
-        ).render();
+        ).render(); // convert / parse java into html
     }
 
 
