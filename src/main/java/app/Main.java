@@ -8,27 +8,36 @@ import org.sql2o.converters.UUIDConverter;
 import org.sql2o.quirks.PostgresQuirks;
 import spark.ModelAndView;
 import spark.Spark;
-
-import java.util.HashMap;
-import java.util.UUID;
-
-
+import java.util.*;
 import static spark.Spark.*;
-//import static spark.route.HttpMethod.get;
 
 public class Main {
 
     public static void main(String[] args) {
+
         BasicConfigurator.configure();
 
+        //staticFileLocation("/images");
         port(getHerokuAssignedPort());
 
-        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://ec2-23-21-70-39.compute-1.amazonaws.com:5432/dbsv5al2b7e771", "ubzionusddizka",
-                "09c8b457c4bb87d1a8d63baf2cbf2876c46857bcc2cc762729cb6a5ab036e110").load();
+        String dbHost = "localhost";
+        String dbName = "cgi_platypi";
+        String dbUser = null;
+        String dbPass = null;
+
+        if ( args.length != 0 ){
+            dbHost = args[0];
+            dbName = args[1];
+            dbUser = args[2];
+            dbPass = args[3];
+        }
+
+        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://"+dbHost+":5432/"+dbName, dbUser,
+                dbPass).load();
         flyway.migrate();
 
-        Sql2o sql2o = new Sql2o("jdbc:postgresql://ec2-23-21-70-39.compute-1.amazonaws.com:5432/dbsv5al2b7e771", "ubzionusddizka",
-                "09c8b457c4bb87d1a8d63baf2cbf2876c46857bcc2cc762729cb6a5ab036e110", new PostgresQuirks() {
+        Sql2o sql2o = new Sql2o("jdbc:postgresql://" + dbHost + ":5432/" + dbName , dbUser,
+                dbPass, new PostgresQuirks() {
             {
                 // make sure we use default UUID converter.
                 converters.put(UUID.class, new UUIDConverter());
@@ -38,12 +47,19 @@ public class Main {
         Model model = new Sql2oModel(sql2o);
         UserModel userModel = new Sql2oModel(sql2o);
 
-        //Sign in methods
+        staticFileLocation("/public");
+        webSocket("/chat", PaddleChatWebSocketHandler.class);
+        init();
 
-        get("/", (req, res) -> "Hello World");
+        get("/room", (req, res) -> {
+            HashMap room = new HashMap();
+            return new ModelAndView(room, "templates/room.vtl");
+        }, new VelocityTemplateEngine());
 
-
-
+        get("/sign-in", (req, res) -> {
+            HashMap signIn = new HashMap();
+            return new ModelAndView(signIn, "templates/sign_in.vtl");
+        }, new VelocityTemplateEngine());
         post("/sign-in", (req,res) -> {
 
             String password = req.queryParams("password");
@@ -61,7 +77,7 @@ public class Main {
 
         Spark.get("/sign-up", (req, res) -> {
             HashMap users = new HashMap();
-            return new ModelAndView(users, "templates/sign-up.vtl");
+            return new ModelAndView(users, "templates/sign_up.vtl");
         }, new VelocityTemplateEngine());
 
         post("/sign-up", (req,res) -> {
@@ -87,4 +103,5 @@ public class Main {
         }
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
+
 }
