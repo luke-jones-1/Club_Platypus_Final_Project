@@ -2,7 +2,7 @@
 //console.log(location.port);
 
 // creates a web socket on page load
-var webSocket = new WebSocket("wss://" + location.hostname + ":" + location.port + "/chat");
+var webSocket = new WebSocket("ws://" + location.hostname + ":" + location.port + "/chat");
 
 // to update the chat when new message created
 webSocket.onmessage = function (msg) { updateChat(msg); };
@@ -34,15 +34,16 @@ function sendMessage(message) {
 
 function updateChat(msg) {
     var data = JSON.parse(msg.data); //Accepts incoming message info
-    insert("chat", data.userMessage);
-    id("userlist").innerHTML = "";
+    insert("chat", data.userMessage); // calls insert function on parsed data passed though websocket from paddlechat
+    id("userlist").innerHTML = ""; // wipes the userlist
     data.userlist.forEach(function (user) {
     insert("userlist", "<li>" + user + "</li>")
     });
+    // iterates through new user list and adds new users while not adding the old ones
 }
 
 function insert(targetId, message) {
-    id(targetId).insertAdjacentHTML("afterbegin", message);
+    id(targetId).insertAdjacentHTML("afterbegin", message); // inserts given html into element with given tag
 }
 
 // document.get... is Jquery

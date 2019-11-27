@@ -19,13 +19,15 @@ public class PaddleChatWebSocketHandler {
         PaddleChat.broadcastMessage(sender = "Server", msg = (username + " joined the Paddle"));
     }
 
+    // gets called whenever a websocket is closed
     @OnWebSocketClose
     public void onClose(Session user, int statusCode, String reason) {
-        String username = PaddleChat.userUsernameMap.get(user);
-        PaddleChat.userUsernameMap.remove(user);
-        PaddleChat.broadcastMessage(sender = "Server", msg = (username + " has left the Paddle"));
+        String username = PaddleChat.userUsernameMap.get(user); // gets username from userUsernameMap
+        PaddleChat.userUsernameMap.remove(user); // removes user from userUsernameMap
+        PaddleChat.broadcastMessage(sender = "Server", msg = (username + " has left the Paddle")); // makes the server left the chat message
     }
 
+    // gets called when webSocket.send is used
     @OnWebSocketMessage
     public void onMessage(Session user, String message) {
         PaddleChat.broadcastMessage(sender = PaddleChat.userUsernameMap.get(user), msg = message);
