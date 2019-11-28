@@ -67,13 +67,13 @@ public class Sql2oModel implements Model, UserModel {
         }
     }
 
-    public String getUsername(String email){
-        try (Connection conn = sql2o.open()) {
-            List<String> username = conn.createQuery("select first_name, last_name from users where email = :email")
-                    .addParameter("email", email)
-                    .executeAndFetch(String.class);
-            return username.toString();
-        }
-    }
+//    public String getUsername(String email){
+//        try (Connection conn = sql2o.open()) {
+//            List<String> username = conn.createQuery("select first_name, last_name from users where email = :email")
+//                    .addParameter("email", email)
+//                    .executeAndFetch(String.class);
+//            return username.toString();
+//        }
+//    }
 }
 
