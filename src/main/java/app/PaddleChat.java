@@ -23,8 +23,7 @@ import static spark.Spark.*;
 
 public class PaddleChat {
     static Map<Session, String> userUsernameMap = new ConcurrentHashMap<>(); // hash of each session and the username as a string
-    static int nextUserNumber = 1;
-
+    static String currentUsername = "user";
 
     public static void broadcastMessage(String sender, String message){
         // selects only open session (websockets that are active) then iterates through each
@@ -48,7 +47,7 @@ public class PaddleChat {
         return article().with(
                 b(sender + ":"), // <b>user1:</b>
                 p(message), // <p>hello</p>
-                span().withClass("timestamp").withText(new SimpleDateFormat("HH:mm:ss").format(new Date())) // <span class="timestamp">HH:mm:ss</span>
+                span().withClass("timestamp").withText(new SimpleDateFormat("HH:mm").format(new Date())) // <span class="timestamp">HH:mm:ss</span>
         ).render();
     }
 

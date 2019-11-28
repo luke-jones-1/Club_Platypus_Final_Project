@@ -11,10 +11,7 @@ public class PaddleChatWebSocketHandler {
     // gets called when web page loaded
     @OnWebSocketConnect
     public void onConnect(Session user) throws Exception {
-//        System.out.println("this is the session user:");
-//        System.out.println(user);
-//        System.out.println("this is the end of session user");
-        String username = "User" + PaddleChat.nextUserNumber++; // temporary username definition
+        String username = PaddleChat.currentUsername; // temporary username definition
         PaddleChat.userUsernameMap.put(user, username); // adds an element to userUsernameMap
         PaddleChat.broadcastMessage(sender = "Server", msg = (username + " joined the Paddle"));
     }
