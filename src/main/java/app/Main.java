@@ -95,7 +95,7 @@ public class Main {
             if (model.doesEmailExist(email)) {
                 res.redirect("/sign-up");
             } else {
-                userModel.createUser(first_name, last_name, password, email);
+                userModel.createUser(first_name, last_name, password, email, platypus_colour);
                 PaddleChat.currentUsername = first_name + last_name;
                 res.redirect("/");
             }
