@@ -97,7 +97,7 @@ public class Main {
                 res.redirect("/sign-up");
             } else {
                 userModel.createUser(first_name, last_name, password, email, platypus_colour);
-                res.redirect("/posts");
+                res.redirect("/room");
             }
             return null;
         });
