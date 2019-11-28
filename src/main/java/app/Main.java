@@ -17,7 +17,7 @@ public class Main {
 
         BasicConfigurator.configure();
 
-        //staticFileLocation("/images");
+        staticFileLocation("/public");
         port(getHerokuAssignedPort());
 
         String dbHost = "localhost";
@@ -46,10 +46,9 @@ public class Main {
 
         Model model = new Sql2oModel(sql2o);
         UserModel userModel = new Sql2oModel(sql2o);
-
-        staticFileLocation("/public");
         webSocket("/chat", PaddleChatWebSocketHandler.class);
         init();
+
 
         get("/index", (req, res) -> {
             HashMap index = new HashMap();
@@ -65,15 +64,15 @@ public class Main {
             HashMap signIn = new HashMap();
             return new ModelAndView(signIn, "templates/sign_in.vtl");
         }, new VelocityTemplateEngine());
+
         post("/sign-in", (req,res) -> {
 
             String password = req.queryParams("password");
             String email = req.queryParams("email");
 
             if(userModel.verifyUser(email, password)) {
-                res.redirect("/posts");
+                res.redirect("/");
             }
-            res.redirect("/");
             return null;
         });
 
@@ -97,7 +96,8 @@ public class Main {
                 res.redirect("/sign-up");
             } else {
                 userModel.createUser(first_name, last_name, password, email, platypus_colour);
-                res.redirect("/posts");
+                PaddleChat.currentUsername = first_name + last_name;
+                res.redirect("/");
             }
             return null;
         });
