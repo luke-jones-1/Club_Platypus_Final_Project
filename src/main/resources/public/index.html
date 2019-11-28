@@ -6,9 +6,14 @@
         <link rel="shortcut icon" href="../images/Favicon/PlatypusEmoji.ico" type="image/x-icon">
         <style>
 
-                #header.jumbotron{
+                #header{
                   font-family: 'Roboto Slab', serif;
                   background-color: turquoise;
+                  height: 100%;
+                }
+
+                #header.jumbotron{
+                  height: 17%;
                 }
 
                 #chatLog.jumbotron{
@@ -33,9 +38,9 @@
                 .content{
                     width: 500px;
                 }
-                .avatarimg{
-                    width: 114.6px;
-                    height: 53.8 px;
+                #avatarimg{
+                    width: 64px;
+                    height: 30px;
                 }
 
                 #chatControls.jumbotron{
@@ -54,7 +59,7 @@
 
                 nav{
                     height: 300px;
-                    width: 150%;
+                    width: 100%;
                     overflow: hidden;
                     overflow-y: scroll;
                 }
@@ -67,15 +72,20 @@
         <title>Room 1</title>
     </head>
     <body>
+    <div class="container">
         <div class="jumbotron" id="header">
-            <h1>CGI Platypi</h1>
-            <p>Room 1</p>
+            <nav aria-label="breadcrumb" id="header">
+                <ol class="breadcrumb" id="header">
+                    <li class="breadcrumb-item"><a href="#">CGI Platypi</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Room 1</li>
+                </ol>
+            </nav>
         </div>
         <nav>
             <div class="jumbotron" id="chatLog">
-                <table id="chat">
-                    <!-- Built by JS -->
-                </table>
+<!--                <table id="chat" class="table">-->
+<!--                    &lt;!&ndash; Built by JS &ndash;&gt;-->
+<!--                </table>-->
             </div>
         </nav>
         <div class="jumbotron" id="chatControls">
@@ -83,7 +93,7 @@
             <input id="message" placeholder="Type your message">
             <button class="btn btn-secondary btn-sm" id="send">Send</button>
         </div>
-
+    </div>
         <script src="chatRunner.js"></script>
     </body>
 </html>
