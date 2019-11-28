@@ -49,12 +49,15 @@ public class Main {
         webSocket("/chat", PaddleChatWebSocketHandler.class);
         init();
 
-        get("/", (req, res) -> {
-            String tester = null;
-        if (tester == null){
-            res.redirect("sign-in");
-        }
-        return null;
+
+        get("/index", (req, res) -> {
+            HashMap index = new HashMap();
+            return new ModelAndView(index, "templates/index.vtl");
+        }, new VelocityTemplateEngine());
+
+        get("/room", (req, res) -> {
+            HashMap room = new HashMap();
+            return new ModelAndView(room, "templates/room.vtl");
         }, new VelocityTemplateEngine());
 
         get("/sign-in", (req, res) -> {
@@ -86,6 +89,8 @@ public class Main {
             String last_name = req.queryParams("last_name");
             String password = req.queryParams("password");
             String email = req.queryParams("email");
+            String platypus_colour = req.queryParams("platypus_colour");
+            System.out.println(platypus_colour);
 
             if (model.doesEmailExist(email)) {
                 res.redirect("/sign-up");

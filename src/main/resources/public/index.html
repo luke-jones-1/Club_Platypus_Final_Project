@@ -1,71 +1,89 @@
 <html>
-<head>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200i&display=swap" rel="stylesheet">
-    <style>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200i&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="../images/Favicon/PlatypusEmoji.ico" type="image/x-icon">
+        <style>
 
-            #header.jumbotron{
-              font-family: 'Roboto Slab', serif;
-              background-color: turquoise;
-            }
+                #header.jumbotron{
+                  font-family: 'Roboto Slab', serif;
+                  background-color: turquoise;
+                }
 
-            #chatLog.jumbotron{
-              background-color: #DAE7E8;
+                #chatLog.jumbotron{
+                  background-color: #DAE7E8;
+                }
 
-            }
+                #chatLogTitle{
+                  font-family: 'Roboto Slab', serif;
+                }
 
-            #chatLogTitle{
-              font-family: 'Roboto Slab', serif;
-            }
+                .content {
+                  font-family: 'Roboto Slab', serif;
+                }
 
-            .content {
-              font-family: 'Roboto Slab', serif;
-            }
+                table, td {
+                  padding: 20px;
+                }
 
-              table, td {
-                padding: 20px;
-              }
-
-                  .avatar{
+                .avatar{
                     width: 200px;
-                  }
-                  .content{
+                }
+                .content{
                     width: 500px;
-                  }
+                }
+                .avatarimg{
+                    width: 114.6px;
+                    height: 53.8 px;
+                }
 
-            #chatControls.jumbotron{
-                background-color: #67BEC4;
-            }
+                #chatControls.jumbotron{
+                    background-color: #67BEC4;
+                }
 
-            #message{
-              height: 30px;
-              width: 200px;
-              font-family: 'Roboto Slab', serif;
-            }
+                #message{
+                  height: 30px;
+                  width: 200px;
+                  font-family: 'Roboto Slab', serif;
+                }
 
-            #submitButton{
-                font-family: 'Roboto Slab', serif;
-            }
+                #send{
+                    font-family: 'Roboto Slab', serif;
+                }
+
+                nav{
+                    height: 300px;
+                    width: 150%;
+                    overflow: hidden;
+                    overflow-y: scroll;
+                }
 
 
 
 
         </style>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Room 1</title>
-</head>
-<body>
-<div class="jumbotron" id="header">
-    <h1>CGI Platypi</h1>
-    <p>Room 1</p>
-</div>
-<div id="chatControls">
-    <input id="message" placeholder="Type your message">
-    <button id="send">Send</button>
-</div>
-<ul id="userlist"></ul>
-<div id="chat"></div>
-<script src="chatRunner.js"></script>
-</body>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Room 1</title>
+    </head>
+    <body>
+        <div class="jumbotron" id="header">
+            <h1>CGI Platypi</h1>
+            <p>Room 1</p>
+        </div>
+        <nav>
+            <div class="jumbotron" id="chatLog">
+                <table id="chat">
+                    <!-- Built by JS -->
+                </table>
+            </div>
+        </nav>
+        <div class="jumbotron" id="chatControls">
+            <p id="userlist"> <!-- Built by JS --> </p><br>
+            <input id="message" placeholder="Type your message">
+            <button class="btn btn-secondary btn-sm" id="send">Send</button>
+        </div>
+
+        <script src="chatRunner.js"></script>
+    </body>
 </html>

@@ -45,10 +45,18 @@ public class PaddleChat {
     // takes java variables as arguments and returns html code with the arguments values as text
     private static String createHtmlMessageFromSender(String sender, String message) {
         return article().with(
-                b(sender + ":"), // <b>user1:</b>
-                p(message), // <p>hello</p>
-                span().withClass("timestamp").withText(new SimpleDateFormat("HH:mm").format(new Date())) // <span class="timestamp">HH:mm:ss</span>
-        ).render();
+                tr( // <tr>
+                        td(attrs(".avatar"), // <td class="avatar">
+                                img(attrs(".avatarimg")).withSrc("/images/Platypus.png") // <img class="avatarimg" src="/images/Platypus.png">
+                        ), // </td>
+                        td(attrs(".content"), // <td class="content">
+                                b(sender + ":"), // <b>user1:</b>
+                                p(message), // <p>hello</p>
+                                span(attrs(".timestamp")).withText(new SimpleDateFormat("HH:mm:ss").format(new Date())) // <span class="timestamp">HH:mm:ss</span>
+
+                        ) // </td>
+                ) // </tr>
+        ).render(); // convert / parse java into html
     }
 
 

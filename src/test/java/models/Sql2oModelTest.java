@@ -61,20 +61,20 @@ class Sql2oModelTest {
     @Test
     void verifyUser(){
 
-        userModel.createUser("Example", "name","password","name@name.com");
+        userModel.createUser("Example", "name","password","name@name.com", "blue");
         List<User> user = new ArrayList<>();
-        user.add(new User( id , "Example", "name", "name@name.com", "password"));
+        user.add(new User( id , "Example", "name", "name@name.com", "password", "blue"));
         assertTrue(userModel.verifyUser("name@name.com", "password"));
     }
 
     @Test
     void createUser(){
-        assertEquals(userModel.createUser("Example", "name","password","name@name.com").toString(), userModel.getUserID("name@name.com"));
+        assertEquals(userModel.createUser("Example", "name","password","name@name.com", "blue").toString(), userModel.getUserID("name@name.com"));
     }
 
     @Test
     void doesUserAlreadyExistYes(){
-        userModel.createUser("Example", "lastname", "password", "test@gmail.com");
+        userModel.createUser("Example", "lastname", "password", "test@gmail.com", "blue");
         assertTrue(model.doesEmailExist("test@gmail.com"));
     }
 
