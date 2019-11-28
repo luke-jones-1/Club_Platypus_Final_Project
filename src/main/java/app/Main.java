@@ -90,11 +90,13 @@ public class Main {
             String last_name = req.queryParams("last_name");
             String password = req.queryParams("password");
             String email = req.queryParams("email");
+            String platypus_colour = req.queryParams("platypus_colour");
+            System.out.println(platypus_colour);
 
             if (model.doesEmailExist(email)) {
                 res.redirect("/sign-up");
             } else {
-                userModel.createUser(first_name, last_name, password, email);
+                userModel.createUser(first_name, last_name, password, email, platypus_colour);
                 res.redirect("/posts");
             }
             return null;

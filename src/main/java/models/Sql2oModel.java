@@ -16,15 +16,16 @@ public class Sql2oModel implements Model, UserModel {
     }
 
     @Override
-    public UUID createUser(String first_name, String last_name, String password, String email) {
+    public UUID createUser(String first_name, String last_name, String password, String email, String platypus_colour) {
         try (Connection conn = sql2o.beginTransaction()) {
             UUID userUuid = UUID.randomUUID();
-            conn.createQuery("insert into users(id, first_name, last_name, email, password) VALUES (:id, :first_name, :last_name, :email, :password)")
+            conn.createQuery("insert into users(id, first_name, last_name, email, password, platypus_colour) VALUES (:id, :first_name, :last_name, :email, :password, :platypus_colour)")
                     .addParameter("id", userUuid)
                     .addParameter("first_name", first_name)
                     .addParameter("last_name", last_name)
                     .addParameter("email", email)
                     .addParameter("password", password)
+                    .addParameter("platypus_colour", platypus_colour)
                     .executeUpdate();
             conn.commit();
             return userUuid;
@@ -38,7 +39,7 @@ public class Sql2oModel implements Model, UserModel {
             List<User> user = conn.createQuery("select password from users where email = :email")
                     .addParameter("email", email)
                     .executeAndFetch(User.class);
-            password = "[User(id=null, first_name=null, last_name=null, email=null, password="+password+")]";
+            password = "[User(id=null, first_name=null, last_name=null, email=null, password="+password+", platypus_colour=null)]";
             if(user.toString().equals(password)){
                 correct_password = true;
             };
