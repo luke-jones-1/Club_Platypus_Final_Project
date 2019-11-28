@@ -34,16 +34,22 @@ function sendMessage(message) {
 
 function updateChat(msg) {
     var data = JSON.parse(msg.data); //Accepts incoming message info
-    insert("chat", data.userMessage); // calls insert function on parsed data passed though websocket from paddlechat
+    insertBottom("chatLog", data.userMessage); // calls insert function on parsed data passed though websocket from paddlechat
     id("userlist").innerHTML = ""; // wipes the userlist
     data.userlist.forEach(function (user) {
-    insert("userlist", user + "    ")
+    insertTop("userlist", user + "    ")
     });
     // iterates through new user list and adds new users while not adding the old ones
 }
 
-function insert(targetId, message) {
+// inserts into top of element
+function insertTop(targetId, message) {
     id(targetId).insertAdjacentHTML("afterbegin", message); // inserts given html into element with given tag
+}
+
+// inserts into bottom of element
+function insertBottom(targetId, message) {
+    id(targetId).insertAdjacentHTML("beforeend", message); // inserts given html into element with given tag
 }
 
 // document.get... is Jquery
