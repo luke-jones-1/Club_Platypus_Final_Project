@@ -13,7 +13,7 @@
                 }
 
                 #header.jumbotron{
-                  height: 17%;
+                  height: 120px;
                 }
 
                 #chatLog.jumbotron{
@@ -45,24 +45,37 @@
 
                 #chatControls.jumbotron{
                     background-color: #67BEC4;
+                    position: absolute;
+                    top: 630px;
+                    height: 200px;
+                    width: 1140px;
                 }
 
                 #message{
-                  height: 30px;
-                  width: 200px;
+                  height: 60px;
+                  width: 100%;
                   font-family: 'Roboto Slab', serif;
+                  font-size: 11px;
+                  overflow: hidden;
+                  overflow-y: scroll;
                 }
 
                 #send{
                     font-family: 'Roboto Slab', serif;
+                    font-size: 11px;
                 }
 
                 nav{
-                    height: 300px;
+                    height: 450px;
                     width: 100%;
                     overflow: hidden;
                     overflow-y: scroll;
                 }
+                #userlist{
+                    font-family: 'Roboto Slab', serif;
+                    font-size: 11px;
+                }
+
 
 
 
@@ -88,9 +101,9 @@
 <!--                </table>-->
             </div>
         </nav>
-        <div class="jumbotron" id="chatControls">
+        <div class="jumbotron  container" id="chatControls">
             <p id="userlist"> <!-- Built by JS --> </p><br>
-            <input id="message" placeholder="Type your message">
+            <input id="message" placeholder="Type your message" class="form-control">
             <button class="btn btn-secondary btn-sm" id="send">Send</button>
         </div>
     </div>
