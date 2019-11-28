@@ -4,6 +4,9 @@
         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200i&display=swap" rel="stylesheet">
+
+        <link rel="shortcut icon" href="../images/Favicon/PlatypusEmoji.ico" type="image/x-icon">
+
         <style>
 
             #header.jumbotron{
@@ -35,6 +38,12 @@
                     width: 500px;
                   }
 
+                  .avatarimg{
+                  width: 114.6px;
+                  height: 53.8 px;
+                  }
+
+
             #chatControls.jumbotron{
                 background-color: #67BEC4;
             }
@@ -45,7 +54,7 @@
               font-family: 'Roboto Slab', serif;
             }
 
-            #submitButton{
+            #send{
                 font-family: 'Roboto Slab', serif;
             }
 
@@ -65,26 +74,26 @@
           <h2 id="chatLogTitle">Chat log:</h2>
           <table>
             <tr>
-              <td class="avatar"><img src="/images/Platypus.png" width="114.6" height="53.8"></td>
+              <td class="avatar"><img src="/images/Platypus.png" class="avatarimg"></td>
               <td class="content"><em>Username:</em><br>This is where the post text is gonna go</td>
             </tr>
             <tr>
-              <td class="avatar"><img src="/images/Platypus.png" width="114.6" height="53.8"></td>
+              <td class="avatar"><img src="/images/Platypus.png" class="avatarimg"></td>
               <td class="content"><em>Username:</em><br>This is where the post text is gonna go</td>
             </tr>
             <tr>
-              <td class="avatar"><img src="/images/Platypus.png" width="114.6" height="53.8"></td>
+              <td class="avatar"><img src="/images/Platypus.png" class="avatarimg"></td>
               <td class="content"><em>Will-Bath:</em><br>I'm a post lol</td>
             </tr>
             <tr>
-              <td class="avatar"><img src="/images/Platypus.png" width="114.6" height="53.8"></td>
+              <td class="avatar"><img src="/images/Platypus.png" class="avatarimg"></td>
               <td class="content"><em>Will-Bath:</em><br>I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol I'm a post lol</td>
             </tr>
           </table>
         </div>
         <div class="jumbotron" id="chatControls">
                 <input id="message" placeholder="Type your message">
-                <button type="submit" class="btn btn-secondary btn-sm" id="submitButton">
+                <button type="submit" class="btn btn-secondary btn-sm" id="send">
                   Send message
                 </button>
         </div>
