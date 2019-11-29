@@ -22,8 +22,4 @@ public class User {
         this.password = password;
         this.platypus_colour = platypus_colour;
     }
-
-    public String getPassword() {
-        return password;
-    }
 }

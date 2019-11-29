@@ -93,7 +93,6 @@ public class Main {
             String password = req.queryParams("password");
             String email = req.queryParams("email");
             String platypus_colour = req.queryParams("platypus_colour");
-            System.out.println(platypus_colour);
 
             if (model.doesEmailExist(email)) {
                 res.redirect("/sign-up");
@@ -102,7 +101,6 @@ public class Main {
                 PaddleChat.currentSessionUser = userModel.getUserID(email);
                 PaddleChat.username = userModel.getUsername(PaddleChat.currentSessionUser);
                 PaddleChat.platypusColour = userModel.getPlatypusColour(PaddleChat.currentSessionUser);
-                System.out.println(PaddleChat.currentSessionUser);
                 res.redirect("/room");
             }
             return null;

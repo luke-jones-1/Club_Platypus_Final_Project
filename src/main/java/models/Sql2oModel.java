@@ -1,10 +1,8 @@
 package models;
 
-import app.PaddleChatWebSocketHandler;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-import java.sql.*;
 import java.util.List;
 import java.util.UUID;
 import java.lang.*;
@@ -40,7 +38,7 @@ public class Sql2oModel implements Model, UserModel {
             List<User> user = conn.createQuery("select password from users where email = :email")
                     .addParameter("email", email)
                     .executeAndFetch(User.class);
-            password = "[User(id=null, first_name=null, last_name=null, email=null, password="+password+", platypus_colour=null)]";
+            password = "[User(id=null, first_name=null, last_name=null, email=null, password=" + password + ", platypus_colour=null)]";
             if(user.toString().equals(password)){
                 correct_password = true;
             };
