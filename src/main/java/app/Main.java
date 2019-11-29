@@ -79,7 +79,7 @@ public class Main {
 
         //Sign up methods
 
-        Spark.get("/sign-up", (req, res) -> {
+        get("/sign-up", (req, res) -> {
             HashMap users = new HashMap();
             return new ModelAndView(users, "templates/sign_up.vtl");
         }, new VelocityTemplateEngine());
