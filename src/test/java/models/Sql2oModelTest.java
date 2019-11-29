@@ -54,7 +54,7 @@ class Sql2oModelTest {
 
     @AfterEach
     void tearDown() {
-        conn.createQuery("TRUNCATE TABLE users")
+        conn.createQuery("TRUNCATE TABLE users CASCADE;")
         .executeUpdate();
     }
 
@@ -82,4 +82,14 @@ class Sql2oModelTest {
     void doesUserAlreadyExistNo(){
         assertFalse(model.doesEmailExist("test@gmail.com"));
     }
+
+    @Test
+    void canAddChatMessagesToTableAndGetIt(){
+        userModel.createUser("Example", "lastname", "password", "test@gmail.com", "blue");
+        String userModelID = userModel.getUserID("test@gmail.com");
+        model.addChatMessage(userModelID, "16:34", "29th Nov", "This is a test post");
+//        assertEquals(SOMETHING)
+    }
+
+
 }
