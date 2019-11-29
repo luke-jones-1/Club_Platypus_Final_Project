@@ -49,8 +49,8 @@ public class PaddleChat {
                 div(attrs(".media"), // <div class="media">
                         img(attrs(".align-self-start mr-3")).withSrc("/images/Platypus.png").withId("avatarimg"), // <img class="align-self-start mr-3" src="/images/Platypus.png">
                         div(attrs(".media-body"), // <div class="media-body">
-                                h5(attrs(".mt-0"), span(attrs(".timestamp")).withText(new SimpleDateFormat("HH:mm").format(new Date()))).withText(sender + "   "), // <span class="timestamp">HH:mm:ss</span>
-                                p(message) // <p>hello</p>
+                                h5(sender + ":   " ).withText(new SimpleDateFormat("HH:mm").format(new Date())), // <span class="timestamp">HH:mm:ss</span>
+                                h6(message) // <p>hello</p>
                         ) // </div>
                 ) // </div>
         ).render(); // convert / parse java into html
