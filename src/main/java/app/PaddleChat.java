@@ -47,12 +47,10 @@ public class PaddleChat {
 
     // takes java variables as arguments and returns html code with the arguments values as text
     private static String createHtmlMessageFromSender(String sender, String message) {
-        if(sender == "Server"){
+        if (sender == "Server"){
             return article().with(
                     div(attrs(".media"),
-                            div(attrs(".media-body"),
-                                    i(message)
-                            )
+                        i(message)
                     )
             ).render();
         }

@@ -57,7 +57,8 @@ public class Main {
 
         get("/room", (req, res) -> {
             HashMap room = new HashMap();
-            if (PaddleChat.username == "User"){
+
+            if (PaddleChat.currentSessionUser == null){
                 res.redirect("/");
             }
             return new ModelAndView(room, "public/room.html");
