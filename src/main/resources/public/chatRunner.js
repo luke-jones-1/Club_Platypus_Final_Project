@@ -3,7 +3,7 @@
 // creates a web socket on page load
 var webSocket;
 //if(webSocket == null){
- webSocket = new WebSocket("wss://" + location.hostname + ":" + location.port + "/chat");
+ webSocket = new WebSocket("ws://" + location.hostname + ":" + location.port + "/chat");
 //}
 // to update the chat when new message created
 webSocket.onmessage = function (msg) { updateChat(msg); };
