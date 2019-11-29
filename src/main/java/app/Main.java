@@ -73,6 +73,7 @@ public class Main {
             if(userModel.verifyUser(email, password)) {
                 PaddleChat.currentSessionUser = userModel.getUserID(email);
                 PaddleChat.username = userModel.getUsername(PaddleChat.currentSessionUser);
+                PaddleChat.platypusColour = userModel.getPlatypusColour(PaddleChat.currentSessionUser);
                 res.redirect("/room");
             }
             return null;
@@ -100,6 +101,7 @@ public class Main {
                 userModel.createUser(first_name, last_name, password, email, platypus_colour);
                 PaddleChat.currentSessionUser = userModel.getUserID(email);
                 PaddleChat.username = userModel.getUsername(PaddleChat.currentSessionUser);
+                PaddleChat.platypusColour = userModel.getPlatypusColour(PaddleChat.currentSessionUser);
                 System.out.println(PaddleChat.currentSessionUser);
                 res.redirect("/room");
             }
