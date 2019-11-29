@@ -23,7 +23,8 @@ import static spark.Spark.*;
 
 public class PaddleChat {
     static Map<Session, String> userUsernameMap = new ConcurrentHashMap<>(); // hash of each session and the username as a string
-    static String currentUsername = "user";
+    static String currentSessionUser = null;
+    public static String username = "User";
 
     public static void broadcastMessage(String sender, String message){
         // selects only open session (websockets that are active) then iterates through each

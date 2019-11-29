@@ -7,13 +7,12 @@ import org.eclipse.jetty.websocket.api.annotations.*;
 @WebSocket
 public class PaddleChatWebSocketHandler {
     private String sender, msg;
-
     // gets called when web page loaded
+
     @OnWebSocketConnect
     public void onConnect(Session user) throws Exception {
-        String username = PaddleChat.currentUsername; // temporary username definition
-        PaddleChat.userUsernameMap.put(user, username); // adds an element to userUsernameMap
-        PaddleChat.broadcastMessage(sender = "Server", msg = (username + " joined the Paddle"));
+        PaddleChat.userUsernameMap.put(user, PaddleChat.username); // adds an element to userUsernameMap
+        PaddleChat.broadcastMessage(sender = "Server", msg = (PaddleChat.username + " joined the Paddle"));
     }
 
     // gets called whenever a websocket is closed

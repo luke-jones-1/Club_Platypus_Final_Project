@@ -1,16 +1,17 @@
 package models;
 
+import app.PaddleChatWebSocketHandler;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import java.sql.*;
 import java.util.List;
 import java.util.UUID;
+import java.lang.*;
 
 public class Sql2oModel implements Model, UserModel {
 
     private Sql2o sql2o;
-
     public Sql2oModel(Sql2o sql2o) {
         this.sql2o = sql2o;
     }
@@ -68,13 +69,30 @@ public class Sql2oModel implements Model, UserModel {
         }
     }
 
-//    public String getUsername(String email){
-//        try (Connection conn = sql2o.open()) {
-//            List<String> username = conn.createQuery("select first_name, last_name from users where email = :email")
-//                    .addParameter("email", email)
-//                    .executeAndFetch(String.class);
-//            return username.toString();
-//        }
-//    }
+    public String getUsername(String userID){
+        StringBuilder username = new StringBuilder("");
+        try (Connection conn = sql2o.open()) {
+            List<String> first_name = conn.createQuery("select first_name from users where id = :userID") //gets ID from users table, using ID stored in SessionID
+                    .addParameter("userID", userID)
+                    .executeAndFetch(String.class);
+            username.append(first_name.toString().replaceAll("[\\[\\]]",""));
+        }
+        try (Connection conn = sql2o.open()) {
+            List<String> last_name = conn.createQuery("select last_name from users where id = :userID") //gets ID from users table, using ID stored in SessionID
+                    .addParameter("userID", userID)
+                    .executeAndFetch(String.class);
+            username.append(" " + last_name.toString().replaceAll("[\\[\\]]",""));
+        }
+
+        return username.toString();
+    }
+    public String getPlatypusColour(String userID){
+        try (Connection conn = sql2o.open()) {
+            List<String> colour = conn.createQuery("select platypus_colour from users where id = :userID") //gets ID from users table, using ID stored in SessionID
+                    .addParameter("userID", userID)
+                    .executeAndFetch(String.class);
+            return colour.toString().replaceAll("[\\[\\]]","");
+        }
+    }
 }
 

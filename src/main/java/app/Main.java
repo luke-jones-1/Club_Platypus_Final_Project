@@ -50,14 +50,14 @@ public class Main {
         init();
 
 
-        get("/index", (req, res) -> {
+        get("/", (req, res) -> {
             HashMap index = new HashMap();
             return new ModelAndView(index, "templates/index.vtl");
         }, new VelocityTemplateEngine());
 
         get("/room", (req, res) -> {
             HashMap room = new HashMap();
-            return new ModelAndView(room, "templates/room.vtl");
+            return new ModelAndView(room, "public/room.html");
         }, new VelocityTemplateEngine());
 
         get("/sign-in", (req, res) -> {
@@ -71,7 +71,9 @@ public class Main {
             String email = req.queryParams("email");
 
             if(userModel.verifyUser(email, password)) {
-                res.redirect("/");
+                PaddleChat.currentSessionUser = userModel.getUserID(email);
+                PaddleChat.username = userModel.getUsername(PaddleChat.currentSessionUser);
+                res.redirect("/room");
             }
             return null;
         });
@@ -96,8 +98,10 @@ public class Main {
                 res.redirect("/sign-up");
             } else {
                 userModel.createUser(first_name, last_name, password, email, platypus_colour);
-                PaddleChat.currentUsername = first_name + last_name;
-                res.redirect("/");
+                PaddleChat.currentSessionUser = userModel.getUserID(email);
+                PaddleChat.username = userModel.getUsername(PaddleChat.currentSessionUser);
+                System.out.println(PaddleChat.currentSessionUser);
+                res.redirect("/room");
             }
             return null;
         });
