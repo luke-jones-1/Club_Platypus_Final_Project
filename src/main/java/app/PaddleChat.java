@@ -47,7 +47,8 @@ public class PaddleChat {
     private static String createHtmlMessageFromSender(String sender, String message) {
         return article().with(
                 div(attrs(".media"), // <div class="media">
-                        img(attrs(".align-self-start mr-3")).withSrc("/images/Platypus.png").withId("avatarimg"), // <img class="align-self-start mr-3" src="/images/Platypus.png">
+                        img(attrs(".align-self-start mr-3")).withSrc("/images/Platypus.png").withId("avatarimg"),
+                        // <img class="align-self-start mr-3" src="/images/Platypus.png">
                         div(attrs(".media-body"), // <div class="media-body">
                                 h5(sender + ":   " ).withText(new SimpleDateFormat("HH:mm").format(new Date())), // <span class="timestamp">HH:mm:ss</span>
                                 h6(message) // <p>hello</p>
