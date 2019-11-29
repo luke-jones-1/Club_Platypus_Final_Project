@@ -48,7 +48,7 @@ public class PaddleChat {
         if (sender == "Server"){
             return article().with(
                     div(attrs(".media"),
-                        b(message)
+                        i(message)
                     )
             ).render();
         }
