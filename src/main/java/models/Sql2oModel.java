@@ -1,30 +1,32 @@
 package models;
 
+import app.PaddleChatWebSocketHandler;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import java.sql.*;
 import java.util.List;
 import java.util.UUID;
+import java.lang.*;
 
 public class Sql2oModel implements Model, UserModel {
 
     private Sql2o sql2o;
-
     public Sql2oModel(Sql2o sql2o) {
         this.sql2o = sql2o;
     }
 
     @Override
-    public UUID createUser(String first_name, String last_name, String password, String email) {
+    public UUID createUser(String first_name, String last_name, String password, String email, String platypus_colour) {
         try (Connection conn = sql2o.beginTransaction()) {
             UUID userUuid = UUID.randomUUID();
-            conn.createQuery("insert into users(id, first_name, last_name, email, password) VALUES (:id, :first_name, :last_name, :email, :password)")
+            conn.createQuery("insert into users(id, first_name, last_name, email, password, platypus_colour) VALUES (:id, :first_name, :last_name, :email, :password, :platypus_colour)")
                     .addParameter("id", userUuid)
                     .addParameter("first_name", first_name)
                     .addParameter("last_name", last_name)
                     .addParameter("email", email)
                     .addParameter("password", password)
+                    .addParameter("platypus_colour", platypus_colour)
                     .executeUpdate();
             conn.commit();
             return userUuid;
@@ -38,7 +40,7 @@ public class Sql2oModel implements Model, UserModel {
             List<User> user = conn.createQuery("select password from users where email = :email")
                     .addParameter("email", email)
                     .executeAndFetch(User.class);
-            password = "[User(id=null, first_name=null, last_name=null, email=null, password="+password+")]";
+            password = "[User(id=null, first_name=null, last_name=null, email=null, password="+password+", platypus_colour=null)]";
             if(user.toString().equals(password)){
                 correct_password = true;
             };
@@ -64,6 +66,32 @@ public class Sql2oModel implements Model, UserModel {
                     .addParameter("email", email)
                     .executeAndFetch(String.class);
             return id.toString().replaceAll("[\\[\\]]","");
+        }
+    }
+
+    public String getUsername(String userID){
+        StringBuilder username = new StringBuilder("");
+        try (Connection conn = sql2o.open()) {
+            List<String> first_name = conn.createQuery("select first_name from users where id = :userID") //gets ID from users table, using ID stored in SessionID
+                    .addParameter("userID", userID)
+                    .executeAndFetch(String.class);
+            username.append(first_name.toString().replaceAll("[\\[\\]]",""));
+        }
+        try (Connection conn = sql2o.open()) {
+            List<String> last_name = conn.createQuery("select last_name from users where id = :userID") //gets ID from users table, using ID stored in SessionID
+                    .addParameter("userID", userID)
+                    .executeAndFetch(String.class);
+            username.append(" " + last_name.toString().replaceAll("[\\[\\]]",""));
+        }
+
+        return username.toString();
+    }
+    public String getPlatypusColour(String userID){
+        try (Connection conn = sql2o.open()) {
+            List<String> colour = conn.createQuery("select platypus_colour from users where id = :userID") //gets ID from users table, using ID stored in SessionID
+                    .addParameter("userID", userID)
+                    .executeAndFetch(String.class);
+            return colour.toString().replaceAll("[\\[\\]]","");
         }
     }
 }

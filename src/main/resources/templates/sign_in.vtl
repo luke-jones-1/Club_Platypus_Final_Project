@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="../images/Favicon/PlatypusEmoji.ico" type="image/x-icon">
+        <style>
+            .jumbotron {background-color: turquoise}
+
+            h1 {font-family: 'Roboto Slab', serif;}
+
+             p{font-family: 'Roboto Slab', serif;}
+
+             h4{font-family: 'Roboto Slab', serif;}
+
+            .form{font-family: 'Roboto Slab', serif;}
+
+            #submitSignIn{background-color: grey;}
+        </style>
+    </head>
+
+    <body>
+        <div class="jumbotron">
+            <h1>Welcome to CGI Platypi</h1>
+            <p>Sign in below</p>
+        </div>
+
+        <div class="container-fluid">
+            <div class="form">
+                <form action="/sign-in" method="post">
+                    Email: <input type="text" name="email"/>
+                    Password: <input type="text" name="password"/>
+                    <br>
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-secondary" id="submitSignIn">
+                <span class="glyphicon glyphicon-save" aria-hidden="true">
+                </span>Sign in</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

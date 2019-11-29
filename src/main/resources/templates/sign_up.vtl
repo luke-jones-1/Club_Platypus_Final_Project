@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="../images/Favicon/PlatypusEmoji.ico" type="image/x-icon">
+     <style>
+         .jumbotron {background-color: turquoise;}
+         h1 {font-family: 'Roboto Slab', serif;}
+         p{font-family: 'Roboto Slab', serif;}
+         .container-fluid {padding:40px;}
+         .form {margin: 0; width: 150px; font-family: 'Roboto Slab', serif;}
+         #submitSignUp{background-color: grey;}
+     </style>
+    </head>
+    <body>
+    <div class="jumbotron">
+        <h1>Sign up for CGI Platypi</h1>
+        <p>Fill in your details to register</p>
+    </div>
+    <div class="container-fluid">
+    <div class="form">
+        <form action="/sign-up" method="post">
+        First Name: <input type="text" name="first_name"/>
+        <br>
+        Last Name: <input type="text" name="last_name"/>
+        <br>
+        Email address: <input type="text" name="email"/>
+        <br>
+        Password: <input type="text" name="password"/>
+        <br>
+        Colour of Platypus:
+        <br>
+        <input type="radio" name="platypus_colour" value="blue"> Blue<br>
+        <input type="radio" name="platypus_colour" value="red"> Red<br>
+        <input type="radio" name="platypus_colour" value="yellow"> Yellow<br>
+        <br>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-secondary" id="submitSignUp">
+            <span class="glyphicon glyphicon-save" aria-hidden="true">
+        </span>Sign up</button>
+        </form>
+    </div>
+    </div>
+    </body>
+</html>
