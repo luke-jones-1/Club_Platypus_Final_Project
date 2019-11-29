@@ -10,6 +10,7 @@
          h1 {font-family: 'Roboto Slab', serif;}
          p {font-family: 'Roboto Slab', serif;}
          end {font-family: 'Lato', sans-serif;}
+    #signUp, #signIn { background-color: grey; }
      </style>
       <body>
    	<div class="jumbotron">
@@ -18,12 +19,19 @@
     </div>
     <div class="container-fluid">
     <p>Get started below:</p>
-    <button type="submit" class = "btn btn-secondary">
+    <form action="/index-sign-up" method="POST">
+        <button type="submit" class="btn btn-secondary" id="signUp">
             <span class="glyphicon glyphicon-save" aria-hidden="true">
-        </span>Sign up</button>
-        <button type="submit" class = "btn btn-secondary">
+            </span>Sign up
+        </button>
+    </form>
+    <br>
+    <form action="/index-sign-in" method="POST">
+        <button type="submit" class="btn btn-secondary" id="signIn">
             <span class="glyphicon glyphicon-save" aria-hidden="true">
-        </span>Sign in</button>
+            </span>Sign in
+        </button>
+    </form>
         <br>
         <br>
         <br>

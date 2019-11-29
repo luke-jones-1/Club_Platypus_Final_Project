@@ -55,6 +55,16 @@ public class Main {
             return new ModelAndView(index, "templates/index.vtl");
         }, new VelocityTemplateEngine());
 
+        post("/index-sign-in", (req, res) -> {
+            res.redirect("/sign-in");
+            return ":)";
+        });
+
+        post("/index-sign-up", (req, res) ->{
+            res.redirect("/sign-up");
+            return ":)";
+        });
+
         get("/room", (req, res) -> {
             HashMap room = new HashMap();
             return new ModelAndView(room, "public/room.html");
