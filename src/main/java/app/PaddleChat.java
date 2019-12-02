@@ -38,9 +38,6 @@ public class PaddleChat {
     public static void broadcastServerMessage(String message){
         userUsernameMap.keySet().stream().filter(Session::isOpen).forEach(session -> {
             // takes a session makes a websocket request to send a string
-            System.out.println(userUsernameMap.values().getClass());
-            System.out.println(userUsernameMap.values());
-            System.out.println(generateUserList(userUsernameMap.values()));
             try {
                 // creating a string in the format of a JSON Object (kind of like a hash that can be read by multiple languages)
                 session.getRemote().sendString(String.valueOf(new JSONObject()
@@ -81,7 +78,6 @@ public class PaddleChat {
         int i = 0;
         userObjectList.forEach(userObject -> {
             userList.append(userObject.getUsername() + "      ");
-            System.out.println(userList);
         });
     return userList.toString();
     }
