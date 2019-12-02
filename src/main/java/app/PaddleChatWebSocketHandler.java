@@ -12,7 +12,7 @@ public class PaddleChatWebSocketHandler {
     @OnWebSocketConnect
     public void onConnect(Session user) throws Exception {
         PaddleChat.userUsernameMap.put(user, PaddleChat.username); // adds an element to userUsernameMap
-        PaddleChat.broadcastMessage(sender = "Server", msg = (PaddleChat.username + " joined the Paddle"));
+        PaddleChat.broadcastMessage("Server", PaddleChat.username + " joined the Paddle");
     }
 
     // gets called whenever a websocket is closed
@@ -20,12 +20,12 @@ public class PaddleChatWebSocketHandler {
     public void onClose(Session user, int statusCode, String reason) {
         String username = PaddleChat.userUsernameMap.get(user); // gets username from userUsernameMap
         PaddleChat.userUsernameMap.remove(user); // removes user from userUsernameMap
-        PaddleChat.broadcastMessage(sender = "Server", msg = (username + " has left the Paddle")); // makes the server left the chat message
+        PaddleChat.broadcastMessage("Server", username + " has left the Paddle"); // makes the server left the chat message
     }
 
     // gets called when webSocket.send is used
     @OnWebSocketMessage
     public void onMessage(Session user, String message) {
-        PaddleChat.broadcastMessage(sender = PaddleChat.userUsernameMap.get(user), msg = message);
+        PaddleChat.broadcastMessage(PaddleChat.userUsernameMap.get(user), message);
     }
 }
