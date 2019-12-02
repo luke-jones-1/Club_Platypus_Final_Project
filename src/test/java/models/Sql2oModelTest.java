@@ -121,5 +121,14 @@ class Sql2oModelTest {
         assertTrue(chat.toString().replaceAll("[\\[\\]]","").contains("time_created=16:20, date_created=1st, content=this is content"));
     }
 
-
+    @Test
+    void chatModelTest(){
+        UUID userId = UUID.randomUUID();
+        UUID chatId = UUID.randomUUID();
+        ChatModel model = new Sql2oModel(sql2o);
+        List<Chat> chat = new ArrayList<Chat>();
+        Chat userinstance = new Chat(chatId, userId, "16:32", "1st", "this is a test");
+        chat.add(userinstance);
+        assertEquals(chat.get(0), userinstance);
+    }
 }
