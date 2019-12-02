@@ -38,11 +38,13 @@ public class Sql2oModel implements Model, UserModel {
             List<User> user = conn.createQuery("select password from users where email = :email")
                     .addParameter("email", email)
                     .executeAndFetch(User.class);
-            password = "[User(id=null, first_name=null, last_name=null, email=null, password=" + password + ", platypus_colour=null)]";
+            System.out.println(user);
+            password = "[User(id=null, first_name=null, last_name=null, email=null, password=" + password + ", platypus_colour=null, username=null)]";
             if(user.toString().equals(password)){
                 correct_password = true;
             };
         }
+
         return correct_password;
     }
 
@@ -90,6 +92,27 @@ public class Sql2oModel implements Model, UserModel {
                     .addParameter("userID", userID)
                     .executeAndFetch(String.class);
             return colour.toString().replaceAll("[\\[\\]]","");
+        }
+    }
+
+    public User fetchUserById(String userID) {
+        try (Connection conn = sql2o.open()) {
+            List<User> userList = conn.createQuery("select * from users where id = :userID") //gets ID from users table, using ID stored in SessionID
+                    .addParameter("userID", userID)
+                    .executeAndFetch(User.class);
+            User user = userList.get(0);
+            System.out.println("***********");
+            System.out.println(user);
+            System.out.println(user.getClass());
+            System.out.println(user.getId());
+            System.out.println(user.getFirst_name());
+            System.out.println(user.getLast_name());
+            System.out.println(user.getEmail());
+            System.out.println(user.getPassword());
+            System.out.println(user.getPlatypus_colour());
+            System.out.println(user.getUsername());
+            System.out.println("***********");
+            return user;
         }
     }
 }

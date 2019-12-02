@@ -7,7 +7,6 @@ import org.sql2o.Sql2o;
 import org.sql2o.converters.UUIDConverter;
 import org.sql2o.quirks.PostgresQuirks;
 import spark.ModelAndView;
-import spark.Spark;
 import java.util.*;
 import static spark.Spark.*;
 
@@ -74,6 +73,7 @@ public class Main {
                 PaddleChat.currentSessionUser = userModel.getUserID(email);
                 PaddleChat.username = userModel.getUsername(PaddleChat.currentSessionUser);
                 PaddleChat.platypusColour = userModel.getPlatypusColour(PaddleChat.currentSessionUser);
+                userModel.fetchUserById(PaddleChat.currentSessionUser);
                 res.redirect("/room");
             }
             return null;

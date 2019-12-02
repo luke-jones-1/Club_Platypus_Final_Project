@@ -1,25 +1,15 @@
 package app;
 
-import models.Model;
-import models.Sql2oModel;
-import models.UserModel;
-import org.apache.log4j.BasicConfigurator;
 import org.eclipse.jetty.websocket.api.Session;
-import org.flywaydb.core.Flyway;
 import org.json.JSONObject;
-import org.sql2o.Sql2o;
-import org.sql2o.converters.UUIDConverter;
-import org.sql2o.quirks.PostgresQuirks;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
-import java.util.UUID;
+
 import java.util.concurrent.ConcurrentHashMap;
 
 import static j2html.TagCreator.*;
-import static j2html.TagCreator.span;
-import static spark.Spark.*;
 
 public class PaddleChat {
     static Map<Session, String> userUsernameMap = new ConcurrentHashMap<>(); // hash of each session and the username as a string

@@ -1,6 +1,5 @@
 package models;
 
-import java.util.List;
 import java.util.UUID;
 
 public interface UserModel {
@@ -9,4 +8,5 @@ public interface UserModel {
     String getUserID(String email);
     String getPlatypusColour(String userID);
     String getUsername(String userID);
+    User fetchUserById(String userID);
 }
