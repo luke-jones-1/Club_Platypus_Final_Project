@@ -142,4 +142,12 @@ class Sql2oModelTest {
         assertEquals(user.get(0), userinstance);
     }
 
+    @Test
+    void canGetUsername(){
+        UUID id = UUID.randomUUID();
+        User userinstance = new User(id, "Albion", "Bidder", "x@y.z", "WillIsTheBest", "green");
+
+        assertEquals("Albion Bidder", userinstance.getUsername());
+    }
+
 }
