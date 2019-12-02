@@ -13,7 +13,6 @@ public class PaddleChatWebSocketHandler {
 
     @OnWebSocketConnect
     public void onConnect(Session user) throws Exception {
-//        User newUser = UserModel.fetchUserById(PaddleChat.currentSessionUser);
         PaddleChat.userUsernameMap.put(user, PaddleChat.currentUserclass); // adds an element to userUsernameMap
         PaddleChat.broadcastServerMessage(msg = (PaddleChat.userUsernameMap.get(user).getUsername() + " joined the Paddle"));
     }
