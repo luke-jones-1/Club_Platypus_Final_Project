@@ -108,8 +108,8 @@ public class Main {
     static void SetPaddle(UserModel userModel, String email){
         PaddleChat.currentSessionUser = userModel.getUserID(email);
         PaddleChat.username = userModel.getUsername(PaddleChat.currentSessionUser);
-        PaddleChat.platypusColour = userModel.getPlatypusColour(PaddleChat.currentSessionUser);
-        userModel.fetchUserById(PaddleChat.currentSessionUser);
+//        PaddleChat.platypusColour = userModel.getPlatypusColour(PaddleChat.currentSessionUser);
+        PaddleChat.currentUserclass = userModel.fetchUserById(PaddleChat.currentSessionUser);
     }
 
     static int getHerokuAssignedPort() {
