@@ -66,8 +66,8 @@ public class Main {
         });
 
         get("/room", (req, res) -> {
-            HashMap room = new HashMap();
 
+            HashMap room = new HashMap();
             if (PaddleChat.currentSessionUser == null){
                 res.redirect("/");
             }
@@ -83,11 +83,8 @@ public class Main {
 
             String password = req.queryParams("password");
             String email = req.queryParams("email");
-
             if(userModel.verifyUser(email, password)) {
-                PaddleChat.currentSessionUser = userModel.getUserID(email);
-                PaddleChat.username = userModel.getUsername(PaddleChat.currentSessionUser);
-                PaddleChat.platypusColour = userModel.getPlatypusColour(PaddleChat.currentSessionUser);
+                SetPaddle(userModel, email);
                 res.redirect("/room");
             }
             return null;
@@ -113,16 +110,18 @@ public class Main {
                 res.redirect("/sign-up");
             } else {
                 userModel.createUser(first_name, last_name, password, email, platypus_colour);
-                PaddleChat.currentSessionUser = userModel.getUserID(email);
-                PaddleChat.username = userModel.getUsername(PaddleChat.currentSessionUser);
-                PaddleChat.platypusColour = userModel.getPlatypusColour(PaddleChat.currentSessionUser);
-                System.out.println(PaddleChat.currentSessionUser);
+                SetPaddle(userModel, email);
                 res.redirect("/room");
             }
             return null;
         });
     }
 
+    static void SetPaddle(UserModel userModel, String email){
+        PaddleChat.currentSessionUser = userModel.getUserID(email);
+        PaddleChat.username = userModel.getUsername(PaddleChat.currentSessionUser);
+        PaddleChat.platypusColour = userModel.getPlatypusColour(PaddleChat.currentSessionUser);
+    }
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (processBuilder.environment().get("PORT") != null) {
