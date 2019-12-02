@@ -1,17 +1,12 @@
 //console.log(location.hostname);
 //console.log(location.port);
 // creates a web socket on page load
-var webSocket;
-//if(webSocket == null){
- webSocket = new WebSocket("ws://" + location.hostname + ":" + location.port + "/chat");
-//}
+ var webSocket = new WebSocket("ws://" + location.hostname + ":" + location.port + "/chat");
 // to update the chat when new message created
 webSocket.onmessage = function (msg) { updateChat(msg); };
 
 // creates a pop-up when websocket times-out/closes
 webSocket.onclose = function () { alert("WebSocket connection closed")};
-
-webSocket.onopen = function () {alert ("You've been connected")};
 
 // Jquery
 // waits for user to click send then calls sendMessage function with arg message value
