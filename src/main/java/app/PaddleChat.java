@@ -22,6 +22,7 @@ import static j2html.TagCreator.span;
 import static spark.Spark.*;
 
 public class PaddleChat {
+
     static Map<Session, String> userUsernameMap = new ConcurrentHashMap<>(); // hash of each session and the username as a string
     static String currentSessionUser = null;
     public static String username = "User";
@@ -38,7 +39,7 @@ public class PaddleChat {
                         .put("userlist", userUsernameMap.values()) // sends data to make list of users
                 ));
             } catch (Exception e){
-                e.printStackTrace();
+                e.printStackTrace(); //prints error log on error
             }
         });
     }
@@ -47,19 +48,19 @@ public class PaddleChat {
 
     // takes java variables as arguments and returns html code with the arguments values as text
     private static String createHtmlMessageFromSender(String sender, String message) {
-        if (sender == "Server"){
+        if (sender == "Server"){ //If it's a server message different formatting applies
             return article().with(
                     div(attrs(".media"),
-                        i(message)
+                        i(message)//italics
                     )
             ).render();
         }
         return article().with(
                 div(attrs(".media"), // <div class="media">
-                        img(attrs(".align-self-start mr-3")).withSrc("/images/" + platypusColour + "Platypus.png").withId("avatarimg"), // <img class="align-self-start mr-3" src="/images/Platypus.png">
                         div(attrs(".media-body"), // <div class="media-body">
-                                h5(sender + ":   " ).withText(new SimpleDateFormat("HH:mm").format(new Date())), // <span class="timestamp">HH:mm:ss</span>
-                                h6(message) // <p>hello</p>
+                                img(attrs(".align-self-start.mr-3")).withSrc("/images/" + platypusColour + "Platypus.png").withId("avatarimg"), // <img class="align-self-start mr-3" src="/images/Platypus.png">
+                                b(" " +sender + "   " ).withText(new SimpleDateFormat("HH:mm").format(new Date())), // <span class="timestamp">HH:mm:ss</span>
+                                h6(message).withClass("msgFormat") // <p>hello</p>
                         ) // </div>
                 ) // </div>
         ).render(); // convert / parse java into html

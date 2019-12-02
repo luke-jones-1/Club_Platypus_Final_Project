@@ -49,30 +49,23 @@ public class Main {
         webSocket("/chat", PaddleChatWebSocketHandler.class);
         init();
 
-
+        //Frontpage method
         get("/", (req, res) -> {
             HashMap index = new HashMap();
             return new ModelAndView(index, "templates/index.vtl");
         }, new VelocityTemplateEngine());
 
-        post("/index-sign-in", (req, res) -> {
-            res.redirect("/sign-in");
-            return ":)";
-        });
-
-        post("/index-sign-up", (req, res) ->{
-            res.redirect("/sign-up");
-            return ":)";
-        });
 
         get("/room", (req, res) -> {
-
             HashMap room = new HashMap();
             if (PaddleChat.currentSessionUser == null){
                 res.redirect("/");
             }
             return new ModelAndView(room, "public/room.html");
         }, new VelocityTemplateEngine());
+
+
+        //Sign-in methods
 
         get("/sign-in", (req, res) -> {
             HashMap signIn = new HashMap();
@@ -83,7 +76,8 @@ public class Main {
 
             String password = req.queryParams("password");
             String email = req.queryParams("email");
-            if(userModel.verifyUser(email, password)) {
+
+            if(userModel.verifyUser(email, password)) { //pulls user from database and compares if
                 SetPaddle(userModel, email);
                 res.redirect("/room");
             }
@@ -104,7 +98,6 @@ public class Main {
             String password = req.queryParams("password");
             String email = req.queryParams("email");
             String platypus_colour = req.queryParams("platypus_colour");
-            System.out.println(platypus_colour);
 
             if (model.doesEmailExist(email)) {
                 res.redirect("/sign-up");
@@ -117,11 +110,14 @@ public class Main {
         });
     }
 
+
+    //Utility functions
     static void SetPaddle(UserModel userModel, String email){
         PaddleChat.currentSessionUser = userModel.getUserID(email);
         PaddleChat.username = userModel.getUsername(PaddleChat.currentSessionUser);
         PaddleChat.platypusColour = userModel.getPlatypusColour(PaddleChat.currentSessionUser);
     }
+
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (processBuilder.environment().get("PORT") != null) {
