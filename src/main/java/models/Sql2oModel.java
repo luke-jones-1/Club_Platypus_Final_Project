@@ -3,13 +3,15 @@ package models;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.lang.*;
 
-public class Sql2oModel implements Model, UserModel {
+public class Sql2oModel implements Model, UserModel, ChatModel {
 
     private Sql2o sql2o;
+
     public Sql2oModel(Sql2o sql2o) {
         this.sql2o = sql2o;
     }
@@ -20,10 +22,8 @@ public class Sql2oModel implements Model, UserModel {
             UUID userUuid = UUID.randomUUID();
             conn.createQuery("insert into users(id, first_name, last_name, email, password, platypus_colour) VALUES (:id, :first_name, :last_name, :email, :password, :platypus_colour)")
                     .addParameter("id", userUuid)
-                    .addParameter("first_name", first_name)
-                    .addParameter("last_name", last_name)
-                    .addParameter("email", email)
-                    .addParameter("password", password)
+                    .addParameter("first_name", first_name) .addParameter("last_name", last_name)
+                    .addParameter("email", email).addParameter("password", password)
                     .addParameter("platypus_colour", platypus_colour)
                     .executeUpdate();
             conn.commit();
@@ -103,5 +103,32 @@ public class Sql2oModel implements Model, UserModel {
             return user;
         }
     }
+
+//    Methods used for chatlog table
+
+    public void addChatMessage(String user_id, String time_created, String date_created, String content){
+        try (Connection conn = sql2o.beginTransaction()) {
+            UUID chat_id = UUID.randomUUID();
+            conn.createQuery("insert into chatlog(chat_id, user_id, time_created, date_created, content) VALUES (:chat_id, :user_id, :time_created, :date_created, :content)")
+                    .addParameter("chat_id", chat_id)
+                    .addParameter("user_id", user_id)
+                    .addParameter("time_created", time_created)
+                    .addParameter("date_created", date_created)
+                    .addParameter("content", content)
+                    .executeUpdate();
+            conn.commit();
+        }
+    }
+
+    public List<Chat> getAllChatMessages() {
+        try (Connection conn = sql2o.open()) {
+            List<Chat> chats = conn.createQuery("select * from chatlog")
+                    .executeAndFetch(Chat.class);
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@");
+            System.out.println(chats);
+            return chats;
+        }
+    }
+
 }
 
