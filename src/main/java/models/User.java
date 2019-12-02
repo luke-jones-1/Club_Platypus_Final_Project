@@ -23,7 +23,37 @@ public class User {
         this.platypus_colour = platypus_colour;
     }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public String getFirst_name() {
+        return first_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    public String getPlatypus_colour() {
+        return platypus_colour;
+    }
+
+    public String getUsername() {
+        return generateUsername(first_name, last_name);
+    }
+
+    private String generateUsername(String f_name, String l_name){
+        String username = new String();
+        username += String.format("%s %s", f_name, l_name);
+        return username;
     }
 }

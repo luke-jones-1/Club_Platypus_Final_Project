@@ -19,7 +19,6 @@ package app;/*
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
-import org.junit.Ignore;
 import spark.ModelAndView;
 import spark.TemplateEngine;
 

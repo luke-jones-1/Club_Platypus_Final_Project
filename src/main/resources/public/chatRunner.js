@@ -6,7 +6,9 @@
 webSocket.onmessage = function (msg) { updateChat(msg); };
 
 // creates a pop-up when websocket times-out/closes
-webSocket.onclose = function () { alert("WebSocket connection closed")};
+webSocket.onclose = function (msg) {
+    alert("WebSocket connection closed");
+    };
 
 // Jquery
 // waits for user to click send then calls sendMessage function with arg message value
@@ -32,11 +34,8 @@ function sendMessage(message) {
 function updateChat(msg) {
     var data = JSON.parse(msg.data); //Accepts incoming message info
     insertBottom("chatLog", data.userMessage); // calls insert function on parsed data passed though websocket from paddlechat
-    id("userlist").innerHTML = ""; // wipes the userlist
-    data.userlist.forEach(function (user) {
-    insertTop("userlist", user + "    ")
-    });
-    // iterates through new user list and adds new users while not adding the old ones
+    id("userlist").innerHTML = "";
+    insertTop("userlist", data.userlist)
 }
 
 // inserts into top of element

@@ -63,8 +63,8 @@ class Sql2oModelTest {
     void verifyUser(){
 
         userModel.createUser("Example", "name","password","name@name.com", "blue");
-        List<User> user = new ArrayList<>();
-        user.add(new User( id , "Example", "name", "name@name.com", "password", "blue"));
+//        List<User> user = new ArrayList<>();
+//        user.add(new User( id , "Example", "name", "name@name.com", "password", "blue"));
         assertTrue(userModel.verifyUser("name@name.com", "password"));
     }
 
