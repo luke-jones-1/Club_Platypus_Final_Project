@@ -12,7 +12,6 @@ public class User {
     private String email;
     private String password;
     private String platypus_colour;
-    private String username;
 
     public User(UUID id, String first_name, String last_name, String email, String password, String platypus_colour){
         super();
@@ -22,7 +21,6 @@ public class User {
         this.email = email;
         this.password = password;
         this.platypus_colour = platypus_colour;
-        this.username = (first_name + " " + last_name);
     }
 
     public UUID getId() {
@@ -50,6 +48,12 @@ public class User {
     }
 
     public String getUsername() {
+        return generateUsername(first_name, last_name);
+    }
+
+    private String generateUsername(String f_name, String l_name){
+        String username = new String();
+        username += String.format("%s %s", f_name, l_name);
         return username;
     }
 }
