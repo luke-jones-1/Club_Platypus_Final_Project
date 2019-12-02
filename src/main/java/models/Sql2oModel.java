@@ -94,5 +94,21 @@ public class Sql2oModel implements Model, UserModel {
             return colour.toString().replaceAll("[\\[\\]]","");
         }
     }
+
+//    Methods used for chatlog table
+
+    public void addChatMessage(String user_id, String time_created, String date_created, String content){
+        try (Connection conn = sql2o.beginTransaction()) {
+            UUID chat_id = UUID.randomUUID();
+            conn.createQuery("insert into chatlog(chat_id, user_id, time_created, date_created, content) VALUES (:chat_id, :user_id, :time_created, :date_created, :content)")
+                    .addParameter("chat_id", chat_id)
+                    .addParameter("user_id", user_id)
+                    .addParameter("time_created", time_created)
+                    .addParameter("date_created", date_created)
+                    .addParameter("content", content)
+                    .executeUpdate();
+            conn.commit();
+        }
+    }
 }
 

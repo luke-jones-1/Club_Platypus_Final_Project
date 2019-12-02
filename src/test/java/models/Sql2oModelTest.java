@@ -84,11 +84,24 @@ class Sql2oModelTest {
     }
 
     @Test
-    void canAddChatMessagesToTableAndGetIt(){
+    void canAddChatMessagesToTable(){
+//        ARRANGE
         userModel.createUser("Example", "lastname", "password", "test@gmail.com", "blue");
         String userModelID = userModel.getUserID("test@gmail.com");
+//        ACT
         model.addChatMessage(userModelID, "16:34", "29th Nov", "This is a test post");
-//        assertEquals(SOMETHING)
+            List<String> returnTimeSQL = conn.createQuery("select time_created from chatlog where user_id=:user_ID")
+                    .addParameter("user_ID", userModelID)
+                    .executeAndFetch(String.class);
+        assertEquals("16:34", returnTimeSQL.toString().replaceAll("[\\[\\]]",""));
+    }
+
+    @Test
+    void canGetAllMessagesFromTable(){ // Similar to verifyUser test
+//        Create user
+//        SQL - Insert into ...
+//        Run method getAllMessages
+//        assertEquals(
     }
 
 
