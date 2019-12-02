@@ -122,13 +122,24 @@ class Sql2oModelTest {
     }
 
     @Test
-    void chatModelTest(){
+    void canCreateInstanceOfChat(){
         UUID userId = UUID.randomUUID();
         UUID chatId = UUID.randomUUID();
         ChatModel model = new Sql2oModel(sql2o);
         List<Chat> chat = new ArrayList<Chat>();
-        Chat userinstance = new Chat(chatId, userId, "16:32", "1st", "this is a test");
-        chat.add(userinstance);
-        assertEquals(chat.get(0), userinstance);
+        Chat chatinstance = new Chat(chatId, userId, "16:32", "1st", "this is a test");
+        chat.add(chatinstance);
+        assertEquals(chat.get(0), chatinstance);
     }
+
+    @Test
+    void canCreateInstanceOfUser(){
+        UUID id = UUID.randomUUID();
+        UserModel model = new Sql2oModel(sql2o);
+        List<User> user = new ArrayList<User>();
+        User userinstance = new User(id, "Will", "Bath", "a@b.c", "test", "real");
+        user.add(userinstance);
+        assertEquals(user.get(0), userinstance);
+    }
+
 }
