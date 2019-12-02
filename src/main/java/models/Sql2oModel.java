@@ -1,18 +1,17 @@
 package models;
 
-import app.PaddleChatWebSocketHandler;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.lang.*;
 
-public class Sql2oModel implements Model, UserModel {
+public class Sql2oModel implements Model, UserModel, ChatModel {
 
     private Sql2o sql2o;
+
     public Sql2oModel(Sql2o sql2o) {
         this.sql2o = sql2o;
     }
@@ -112,11 +111,15 @@ public class Sql2oModel implements Model, UserModel {
         }
     }
 
-    public ArrayList getAllChatMessages(){
-        ArrayList<String> test = new ArrayList<String>();
-        test.add(":)");
-        System.out.println(test);
-        return test;
+    public List<Chat> getAllChatMessages() {
+        try (Connection conn = sql2o.open()) {
+            List<Chat> chats = conn.createQuery("select * from chatlog")
+                    .executeAndFetch(Chat.class);
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@");
+            System.out.println(chats);
+            return chats;
+        }
     }
+
 }
 

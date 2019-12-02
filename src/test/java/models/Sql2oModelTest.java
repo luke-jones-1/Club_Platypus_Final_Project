@@ -32,7 +32,8 @@ class Sql2oModelTest {
 
     Connection conn = sql2o.open();
     Model model = new Sql2oModel(sql2o);
-    UserModel userModel= new Sql2oModel(sql2o);
+    UserModel userModel = new Sql2oModel(sql2o);
+    ChatModel chatModel = new Sql2oModel(sql2o);
 
     @BeforeAll
     static void setUpClass() {
@@ -89,7 +90,7 @@ class Sql2oModelTest {
         userModel.createUser("Example", "lastname", "password", "test@gmail.com", "blue");
         String userModelID = userModel.getUserID("test@gmail.com");
 //        ACT
-        model.addChatMessage(userModelID, "16:34", "29th Nov", "This is a test post");
+        chatModel.addChatMessage(userModelID, "16:34", "29th Nov", "This is a test post");
         List<String> returnTimeSQL = conn.createQuery("select time_created from chatlog where user_id=:user_ID")
                 .addParameter("user_ID", userModelID)
                 .executeAndFetch(String.class);
@@ -103,19 +104,21 @@ class Sql2oModelTest {
         userModel.createUser("Sir","Bath", "password", "a@b.c", "real");
         String userId = userModel.getUserID("a@b.c");
         //        SQL - Insert chat message ...
+        UUID chatId = UUID.randomUUID();
         conn.createQuery("INSERT into chatlog (chat_id, user_id, time_created, date_created, content) Values (:chat_id, :user_id, :time_created, :date_created, :content);")
-                .addParameter("chat_id", "01")
+                .addParameter("chat_id", chatId)
                 .addParameter("user_id", userId)
                 .addParameter("time_created", "16:20")
                 .addParameter("date_created", "1st")
                 .addParameter("content", "this is content")
-                .executeAndFetch(String.class);
+                .executeUpdate();
+
         // act
         //        Run method getAllMessages
-        ArrayList<String> chat = model.getAllChatMessages();
+        List<Chat> chat = chatModel.getAllChatMessages();
         // assert
         //        assertEquals()
-        assertEquals(chat, "test");
+        assertTrue(chat.toString().replaceAll("[\\[\\]]","").contains("time_created=16:20, date_created=1st, content=this is content"));
     }
 
 
