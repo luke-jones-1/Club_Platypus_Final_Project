@@ -5,6 +5,7 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.lang.*;
@@ -109,6 +110,13 @@ public class Sql2oModel implements Model, UserModel {
                     .executeUpdate();
             conn.commit();
         }
+    }
+
+    public ArrayList getAllChatMessages(){
+        ArrayList<String> test = new ArrayList<String>();
+        test.add(":)");
+        System.out.println(test);
+        return test;
     }
 }
 

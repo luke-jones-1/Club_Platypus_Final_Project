@@ -90,18 +90,32 @@ class Sql2oModelTest {
         String userModelID = userModel.getUserID("test@gmail.com");
 //        ACT
         model.addChatMessage(userModelID, "16:34", "29th Nov", "This is a test post");
-            List<String> returnTimeSQL = conn.createQuery("select time_created from chatlog where user_id=:user_ID")
-                    .addParameter("user_ID", userModelID)
-                    .executeAndFetch(String.class);
+        List<String> returnTimeSQL = conn.createQuery("select time_created from chatlog where user_id=:user_ID")
+                .addParameter("user_ID", userModelID)
+                .executeAndFetch(String.class);
         assertEquals("16:34", returnTimeSQL.toString().replaceAll("[\\[\\]]",""));
     }
 
     @Test
     void canGetAllMessagesFromTable(){ // Similar to verifyUser test
-//        Create user
-//        SQL - Insert into ...
-//        Run method getAllMessages
-//        assertEquals(
+        // arrange
+        //        Create user
+        userModel.createUser("Sir","Bath", "password", "a@b.c", "real");
+        String userId = userModel.getUserID("a@b.c");
+        //        SQL - Insert chat message ...
+        conn.createQuery("INSERT into chatlog (chat_id, user_id, time_created, date_created, content) Values (:chat_id, :user_id, :time_created, :date_created, :content);")
+                .addParameter("chat_id", "01")
+                .addParameter("user_id", userId)
+                .addParameter("time_created", "16:20")
+                .addParameter("date_created", "1st")
+                .addParameter("content", "this is content")
+                .executeAndFetch(String.class);
+        // act
+        //        Run method getAllMessages
+        ArrayList<String> chat = model.getAllChatMessages();
+        // assert
+        //        assertEquals()
+        assertEquals(chat, "test");
     }
 
 
