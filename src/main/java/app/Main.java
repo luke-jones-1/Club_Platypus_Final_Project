@@ -7,7 +7,6 @@ import org.sql2o.Sql2o;
 import org.sql2o.converters.UUIDConverter;
 import org.sql2o.quirks.PostgresQuirks;
 import spark.ModelAndView;
-import spark.Spark;
 import java.util.*;
 import static spark.Spark.*;
 
@@ -87,7 +86,7 @@ public class Main {
 
         //Sign up methods
 
-        Spark.get("/sign-up", (req, res) -> {
+        get("/sign-up", (req, res) -> {
             HashMap users = new HashMap();
             return new ModelAndView(users, "templates/sign_up.vtl");
         }, new VelocityTemplateEngine());
@@ -114,8 +113,7 @@ public class Main {
     //Utility functions
     static void SetPaddle(UserModel userModel, String email){
         PaddleChat.currentSessionUser = userModel.getUserID(email);
-        PaddleChat.username = userModel.getUsername(PaddleChat.currentSessionUser);
-        PaddleChat.platypusColour = userModel.getPlatypusColour(PaddleChat.currentSessionUser);
+        PaddleChat.currentUserclass = userModel.fetchUserById(PaddleChat.currentSessionUser);
     }
 
     static int getHerokuAssignedPort() {

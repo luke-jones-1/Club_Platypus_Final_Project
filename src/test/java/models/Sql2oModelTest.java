@@ -63,8 +63,8 @@ class Sql2oModelTest {
     void verifyUser(){
 
         userModel.createUser("Example", "name","password","name@name.com", "blue");
-        List<User> user = new ArrayList<>();
-        user.add(new User( id , "Example", "name", "name@name.com", "password", "blue"));
+//        List<User> user = new ArrayList<>();
+//        user.add(new User( id , "Example", "name", "name@name.com", "password", "blue"));
         assertTrue(userModel.verifyUser("name@name.com", "password"));
     }
 
@@ -121,5 +121,33 @@ class Sql2oModelTest {
         assertTrue(chat.toString().replaceAll("[\\[\\]]","").contains("time_created=16:20, date_created=1st, content=this is content"));
     }
 
+    @Test
+    void canCreateInstanceOfChat(){
+        UUID userId = UUID.randomUUID();
+        UUID chatId = UUID.randomUUID();
+        ChatModel model = new Sql2oModel(sql2o);
+        List<Chat> chat = new ArrayList<Chat>();
+        Chat chatinstance = new Chat(chatId, userId, "16:32", "1st", "this is a test");
+        chat.add(chatinstance);
+        assertEquals(chat.get(0), chatinstance);
+    }
+
+    @Test
+    void canCreateInstanceOfUser(){
+        UUID id = UUID.randomUUID();
+        UserModel model = new Sql2oModel(sql2o);
+        List<User> user = new ArrayList<User>();
+        User userinstance = new User(id, "Will", "Bath", "a@b.c", "test", "real");
+        user.add(userinstance);
+        assertEquals(user.get(0), userinstance);
+    }
+
+    @Test
+    void canGetUsername(){
+        UUID id = UUID.randomUUID();
+        User userinstance = new User(id, "Albion", "Bidder", "x@y.z", "WillIsTheBest", "green");
+
+        assertEquals("Albion Bidder", userinstance.getUsername());
+    }
 
 }
