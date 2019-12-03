@@ -60,14 +60,17 @@ public class PaddleChat {
                                 b(" " +sender + "   " ).withText(new SimpleDateFormat("HH:mm").format(new Date())), // <span class="timestamp">HH:mm:ss</span>
                                 h6(message).withClass("msgFormat") // <p>hello</p>
                         ) // </div>
-                ) // </div>
+                ), // </div>
+                br()
         ).render(); // convert / parse java into html
     }
 
     private static String createHtmlMessageFromServer(String message){
         return article().with(
                 div(attrs(".media"),
-                        i(message)
+                        br(),
+                        i(message).withId("serverMessage"),
+                        br()
                 )
         ).render();
     }
@@ -76,7 +79,7 @@ public class PaddleChat {
         StringBuilder userList = new StringBuilder();
         int i = 0;
         userObjectList.forEach(userObject -> {
-            userList.append(userObject.getUsername() + "      ");
+            userList.append(p(userObject.getUsername()));
         });
     return userList.toString();
     }

@@ -5,75 +5,105 @@
         <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200i&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="../images/Favicon/PlatypusEmoji.ico" type="image/x-icon">
         <style>
+                article{
+                display: block;
+                }
 
                 #header{
                   font-family: 'Roboto Slab', serif;
                   background-color: turquoise;
                   height: 100%;
+                  margin-top: 3%;
                 }
 
                 #header.jumbotron{
-                  height: 120px;
+                  font-size: 30px;
+                    height: 20%;
+                    width: 100%;
+                    padding-top: 2%;
                 }
 
                 #chatLog.jumbotron{
-                  background-color: #DAE7E8;
+                    padding-left:2%;
+                    background-color: #DAE7E8;
+                }
+                .container {
+                padding-left: 0px;
+                padding-right: 0px;
+                }
+                .container.jumbotron {
+                    padding-right: 5%;
+                    padding-left: 5%;
                 }
 
                 #chatLogTitle{
                   font-family: 'Roboto Slab', serif;
                 }
 
+                #userListBox {
+                    background-color: #67BEC4;
+                    float: right;
+                    width: 20%;
+                    padding-top: 1%;
+                    padding-left: 1%;
+                    border-radius: 6px;
+                }
+
                 .content {
                   font-family: 'Roboto Slab', serif;
                 }
 
-                table, td {
-                  padding: 20px;
-                }
-
-                .avatar{
-                    width: 200px;
-                }
                 .content{
                     width: 500px;
                 }
 
                 .msgFormat{
-                    margin-left: 20%;
-                    margin-top: 0px;
+                    margin-left: 16.5%;
+                    margin-top: 0%;
                     text-align: left;
                     word-break: break-word;
                 }
+                #serverMessage{
+                    margin-bottom: 4%;
+                    text-align: left;
+                    display: inline-block;
+                    word-break: break-word;
+                }
                 #avatarimg{
-                    width: 56px;
-                    height: 28px;
+                    width: 90px;
+                    height: 40px;
+                    float: left;
                 }
 
-                #chatControls.jumbotron{
-                    background-color: #67BEC4;
+                #bottomBar.jumbotron{
+                    background-color: turquoise;
                     position: absolute;
-                    top: 630px;
-                    height: 200px;
-                    width: 50%;
+                    height: 20%;
+                    margin-top: 5%;
+                    width: 92%;
                 }
 
                 #message{
-                  height: 60px;
-                  font-family: 'Roboto Slab', serif;
-                  font-size: 11px;
-                  overflow: hidden;
-                  overflow-y: scroll;
+                height: 6%;
+                font-family: 'Roboto Slab', serif;
+                font-size: 11px;
+                overflow: hidden;
+                overflow-y: scroll;
+                display: inline-block;
+                width: 68%;
                 }
 
                 #send{
                     font-family: 'Roboto Slab', serif;
-                    font-size: 11px;
+                font-size: 11px;
+                background-color: whitesmoke;
+                height: 7%;
+                width: 7%;
                 }
 
                 nav{
-                    height: 450px;
-                    width: 50%;
+                    height: 50%;
+                    width: 75%;
                     overflow: hidden;
                     overflow-y: scroll;
                 }
@@ -97,14 +127,20 @@
                 </ol>
             </nav>
         </div>
+        <div id="userListBox">
+            <div id="userlist"> <!-- Built by JS --> </div><br>
+        </div>
         <nav>
             <div class="jumbotron" id="chatLog">
             </div>
         </nav>
-        <div class="jumbotron  container" id="chatControls">
-            <p id="userlist"> <!-- Built by JS --> </p><br>
+
+        <div>
             <input id="message" placeholder="Type your message" class="form-control">
             <button class="btn btn-secondary btn-sm" id="send">Send</button>
+
+        </div>
+        <div class="jumbotron  container" id="header">
         </div>
     </div>
         <script src="chatRunner.js"></script>
