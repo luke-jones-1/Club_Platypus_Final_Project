@@ -70,7 +70,10 @@
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-analysis:7.0" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-tree:7.0" level="project" />
     <orderEntry type="library" name="Maven: org.jacoco:org.jacoco.report:0.8.3" level="project" />
+<<<<<<< HEAD
+=======
     <orderEntry type="library" name="Maven: com.j2html:j2html:1.2.0" level="project" />
+>>>>>>> da29c177bb6871e59375f806622bace403c28056
     <orderEntry type="library" name="Maven: org.flywaydb:flyway-core:6.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.sparkjava:spark-core:2.7.2" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-server:9.4.8.v20171121" level="project" />
@@ -106,6 +109,9 @@
     <orderEntry type="library" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:17.0.0" level="project" />
+<<<<<<< HEAD
+=======
     <orderEntry type="library" name="Maven: org.json:json:20160810" level="project" />
+>>>>>>> da29c177bb6871e59375f806622bace403c28056
   </component>
 </module>
