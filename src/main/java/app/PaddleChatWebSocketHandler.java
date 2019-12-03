@@ -5,7 +5,7 @@ import org.eclipse.jetty.websocket.api.*;
 import org.eclipse.jetty.websocket.api.annotations.*;
 import models.*;
 
-@WebSocket
+@WebSocket(maxIdleTime=1000000000)
 public class PaddleChatWebSocketHandler {
     private User sender;
     private String msg;
@@ -13,7 +13,7 @@ public class PaddleChatWebSocketHandler {
 
     @OnWebSocketConnect
     public void onConnect(Session user) throws Exception {
-        PaddleChat.userUsernameMap.put(user, PaddleChat.currentUserclass); // adds an element to userUsernameMap
+        PaddleChat.userUsernameMap.put(user, PaddleChat.currentUserClass); // adds an element to userUsernameMap
         PaddleChat.broadcastServerMessage(msg = (PaddleChat.userUsernameMap.get(user).getUsername() + " joined the Paddle"));
     }
 
