@@ -45,7 +45,10 @@ public class Main {
 
         Model model = new Sql2oModel(sql2o);
         UserModel userModel = new Sql2oModel(sql2o);
-        webSocket("/chat", PaddleChatWebSocketHandler.class);
+        ChatModel chat = new Sql2oModel(sql2o); // creates instance of chatmodel
+        PaddleChatWebSocketHandler PaddleChatWebSocket = new PaddleChatWebSocketHandler(chat);
+        // passes chat instance into paddlechat socket handler so that it can be used inside the class
+        webSocket("/chat", PaddleChatWebSocket);// loads the web socket with the instance of paddlechathandler
         init();
 
         //Frontpage method
@@ -57,7 +60,7 @@ public class Main {
 
         get("/room", (req, res) -> {
             HashMap room = new HashMap();
-            if (PaddleChat.currentSessionUser == null){
+            if (PaddleChat.currentUserClass == null){
                 res.redirect("/");
             }
             return new ModelAndView(room, "public/room.html");
@@ -112,8 +115,8 @@ public class Main {
 
     //Utility functions
     static void SetPaddle(UserModel userModel, String email){
-        PaddleChat.currentSessionUser = userModel.getUserID(email);
-        PaddleChat.currentUserclass = userModel.fetchUserById(PaddleChat.currentSessionUser);
+//        PaddleChat.currentSessionUser = userModel.getUserID(email);
+        PaddleChat.currentUserClass = userModel.fetchUser(email);
     }
 
     static int getHerokuAssignedPort() {

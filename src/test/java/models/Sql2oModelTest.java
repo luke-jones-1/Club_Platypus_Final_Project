@@ -61,16 +61,13 @@ class Sql2oModelTest {
 
     @Test
     void verifyUser(){
-
         userModel.createUser("Example", "name","password","name@name.com", "blue");
-//        List<User> user = new ArrayList<>();
-//        user.add(new User( id , "Example", "name", "name@name.com", "password", "blue"));
         assertTrue(userModel.verifyUser("name@name.com", "password"));
     }
 
     @Test
     void createUser(){
-        assertEquals(userModel.createUser("Example", "name","password","name@name.com", "blue").toString(), userModel.getUserID("name@name.com"));
+        assertEquals(userModel.createUser("Example", "name","password","name@name.com", "blue"), userModel.fetchUser("name@name.com").getId());
     }
 
     @Test
@@ -88,7 +85,7 @@ class Sql2oModelTest {
     void canAddChatMessagesToTable(){
 //        ARRANGE
         userModel.createUser("Example", "lastname", "password", "test@gmail.com", "blue");
-        String userModelID = userModel.getUserID("test@gmail.com");
+        String userModelID = userModel.fetchUser("test@gmail.com").getId().toString();
 //        ACT
         chatModel.addChatMessage(userModelID, "16:34", "29th Nov", "This is a test post");
         List<String> returnTimeSQL = conn.createQuery("select time_created from chatlog where user_id=:user_ID")
@@ -102,7 +99,7 @@ class Sql2oModelTest {
         // arrange
         //        Create user
         userModel.createUser("Sir","Bath", "password", "a@b.c", "real");
-        String userId = userModel.getUserID("a@b.c");
+        String userId = userModel.fetchUser("a@b.c").getId().toString();
         //        SQL - Insert chat message ...
         UUID chatId = UUID.randomUUID();
         conn.createQuery("INSERT into chatlog (chat_id, user_id, time_created, date_created, content) Values (:chat_id, :user_id, :time_created, :date_created, :content);")
@@ -119,6 +116,14 @@ class Sql2oModelTest {
         // assert
         //        assertEquals()
         assertTrue(chat.toString().replaceAll("[\\[\\]]","").contains("time_created=16:20, date_created=1st, content=this is content"));
+    }
+
+    @Test
+    void canfetchUser(){
+        userModel.createUser("Sir","Bath", "password", "a@b.c", "real");
+        User user = userModel.fetchUser("a@b.c");
+        User expectedUser = new User(user.getId(), "Sir", "Bath", "a@b.c", "password", "real");
+        assertEquals(expectedUser, user);
     }
 
     @Test
