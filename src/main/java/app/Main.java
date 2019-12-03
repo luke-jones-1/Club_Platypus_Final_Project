@@ -57,7 +57,7 @@ public class Main {
 
         get("/room", (req, res) -> {
             HashMap room = new HashMap();
-            if (PaddleChat.currentSessionUser == null){
+            if (PaddleChat.currentUserClass == null){
                 res.redirect("/");
             }
             return new ModelAndView(room, "public/room.html");
@@ -112,8 +112,8 @@ public class Main {
 
     //Utility functions
     static void SetPaddle(UserModel userModel, String email){
-        PaddleChat.currentSessionUser = userModel.getUserID(email);
-        PaddleChat.currentUserclass = userModel.fetchUserById(PaddleChat.currentSessionUser);
+//        PaddleChat.currentSessionUser = userModel.getUserID(email);
+        PaddleChat.currentUserClass = userModel.fetchUser(email);
     }
 
     static int getHerokuAssignedPort() {
