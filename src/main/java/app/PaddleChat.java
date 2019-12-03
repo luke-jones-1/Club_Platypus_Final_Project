@@ -17,7 +17,7 @@ public class PaddleChat {
     static Map<Session, User> userUsernameMap = new ConcurrentHashMap<>(); // hash of each session and the username as a string
     static String currentSessionUser = null;
     public static User currentUserClass = null;
-
+//    public static Chat
     public static void broadcastMessage(User sender, String message){
         // selects only open session (websockets that are active) then iterates through each
         userUsernameMap.keySet().stream().filter(Session::isOpen).forEach(session -> {
