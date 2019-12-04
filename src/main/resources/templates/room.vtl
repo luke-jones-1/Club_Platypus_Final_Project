@@ -4,176 +4,32 @@
         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200i&display=swap" rel="stylesheet">
-        <link rel="shortcut icon" href="../images/Favicon/PlatypusEmoji.ico" type="image/x-icon">
-
-        <!-- emoji keyboard -->
-        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script src="emojiJquery.js"></script>
-        <style>
-                article{
-                display: block;
-                }
-
-                #header{
-                  font-family: 'Roboto Slab', serif;
-                  background-color: turquoise;
-                  height: 100%;
-                  margin-top: 3%;
-                }
-
-                #header.jumbotron{
-                  font-size: 30px;
-                    height: 20%;
-                    width: 100%;
-                    padding-top: 2%;
-                }
-
-                #chatLog.jumbotron{
-                    padding-left:2%;
-                    background-color: #DAE7E8;
-                }
-                .container {
-                padding-left: 0px;
-                padding-right: 0px;
-                }
-                .container.jumbotron {
-                    padding-right: 5%;
-                    padding-left: 5%;
-                }
-
-                #chatLogTitle{
-                  font-family: 'Roboto Slab', serif;
-                }
-
-                #userListBox {
-                    background-color: #67BEC4;
-                    float: right;
-                    width: 20%;
-                    padding-top: 1%;
-                    padding-left: 1%;
-                    border-radius: 6px;
-                }
-
-                .content {
-                  font-family: 'Roboto Slab', serif;
-                }
-
-                .content{
-                    width: 500px;
-                }
-
-                .msgFormat{
-                    margin-left: 16.5%;
-                    margin-top: 0%;
-                    text-align: left;
-                    word-break: break-word;
-                }
-                #serverMessage{
-                    margin-bottom: 4%;
-                    text-align: left;
-                    display: inline-block;
-                    word-break: break-word;
-                }
-                #avatarimg{
-                    width: 90px;
-                    height: 40px;
-                    float: left;
-                }
-
-                #bottomBar.jumbotron{
-                    background-color: turquoise;
-                    position: absolute;
-                    height: 20%;
-                    margin-top: 5%;
-                    width: 92%;
-                }
-
-                #message{
-                height: 6%;
-                font-family: 'Roboto Slab', serif;
-                font-size: 11px;
-                overflow: hidden;
-                overflow-y: scroll;
-                display: inline-block;
-                width: 68%;
-                }
-
-                #send{
-                    font-family: 'Roboto Slab', serif;
-                font-size: 11px;
-                background-color: #D0D0D0;
-                height: 7%;
-                width: 7%;
-                }
-
-                nav{
-                    height: 50%;
-                    width: 75%;
-                    overflow: hidden;
-                    overflow-y: scroll;
-                }
-                #userlist{
-                    font-family: 'Roboto Slab', serif;
-                    font-size: 11px;
-                }
-                #room-title{
-                color: #686868;
-                }
-
-                #room-number{
-                color: #686868;
-                }
-
-                <!-- emoji keyboard -->
-                body{
-                  box-sizing: border-box;
-                  min-height: 100vh;
-                  margin: 0;
-                }
-                #emojiContainer{
-
-                }
-                .emojiKeyboard{
-                  width: 44%;
-                  border: 1px solid #0d8cfc;
-                  background-color: aliceblue;
-                }
-                .emojis{
-                  width: 100%;
-                  display: flex;
-                  flex-wrap: wrap;
-                }
-                .emojiFrame{
-                  box-sizing: content-box;
-                  text-align: center;
-                  width: 30px;
-                  font-size: 21px;
-                  padding: 3px;
-                  margin: 3px;
-                  background-color: transparent;
-                }
-                .emojiFrame:hover{
-                  background-color: #0d8cfc;
-                }
-
-
-
-
-        </style>
+        <link rel="shortcut icon"  href="../images/Favicon/PlatypusEmoji.ico" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="../Styles/styles.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Room 1</title>
     </head>
     <body>
     <div class="container">
         <div class="jumbotron" id="header">
-            <h2>CGI Platypi</h2>
-            <p>Room 1</p>
+            <label class="switch">
+                <input id="checkBoxState" type="checkbox">
+                <span class="slider">
+                            <p class="innerNum">1</p>
+                            <p class="innerNum">2</p>
+                        </span>
+            </label>
+            <p style="float:right; font-size:20;">Room</p>
+            <div aria-label="breadcrumb" id="header">
+               <h2>CGI Platypi</h2>
+            </div>
         </div>
         <div id="userListBox">
             <div id="userlist"> <!-- Built by JS --> </div><br>
         </div>
-        <nav>
-            <div class="jumbotron" id="chatLog">
+
+        <nav id="navIdentifier">
+           <!-- <div class="jumbotron" id="chatLog">
                 #if( $chatLog.isempty)
                     <p>its empty</p>
                 #else
@@ -183,11 +39,8 @@
                     <p>$key $chatLog.get($key)</p>
                     <p>happiness noises</p>
                 #end
-            </div>
+            </div>-->
         </nav>
-
-
-
         <div>
             <textarea id="message" placeholder="Type your message" class="form-control"></textarea>
             <button class="btn btn-secondary btn-xs" id="send"><span class="glyphicon glyphicon-edit" aria-hidden="true">
@@ -231,5 +84,6 @@
         </div>
     </div>
         <script src="chatRunner.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     </body>
 </html>
