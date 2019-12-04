@@ -6,11 +6,24 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:100&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="../images/Favicon/PlatypusEmoji.ico" type="image/x-icon">
      <style>
-     .jumbotron {background-color: turquoise;}
+     .jumbotron {background-color: turquoise; color: #234B46}
          h1 {font-family: 'Roboto Slab', serif;}
          p {font-family: 'Roboto Slab', serif;}
-         end {font-family: 'Lato', sans-serif;}
-    #signUp, #signIn { background-color: #D0D0D0; }
+         fact {font-family: 'Roboto Slab', serif;}
+         fact-title {
+             font-family: 'Roboto Slab', serif;
+             border: 2px;
+             border-style: dotted;
+             border-radius: 6px;
+             font-size:15px;
+             padding-top: 5px;
+             padding-right: 5px;
+             padding-bottom: 5px;
+             padding-left: 5px;
+             background-color: Turquoise ;
+             }
+			end {font-family: 'Lato', sans-serif;}
+   			#signUp, #signIn { background-color: #D0D0D0; }
      </style>
       <body>
    	<div class="jumbotron">
@@ -27,24 +40,27 @@
             <span class="glyphicon glyphicon-log-in" aria-hidden="true">
         </span>  Sign in</button>
     </form>
-        <br>
-        <br>
-        <p>Platypus Fun Fact!</p>
-        <p id="selectedFactOutput"></p>
+        <br><br>
+        <fact>
+        <fact-title>Platypus Fun Fact!</fact-title>
+        <br> <br>
+        <fact id="selectedFactOutput"></fact>
+        </fact>
         <br>
         <br>
          <end>Created by Luke Jones, Albion Bidder, Josie Pollard, Toby Young and Will Bath at CGI Bristol.</end>
      </div>
      <script>
         var factsArray =
-        ["A platypus can live more than 12 years in the wild! Their predators include snakes, hawks, owls, eagles and sometimes crocodiles.",
-         "Male Platypods have a toxic barb on the back of their hind feet. This contains a neurotoxin-like substance that causes immense pain in humans.",
-         "The average lifespan of the duck-billed platypus is around 17 years.",
-         "A male platypus is normally 15-20% longer than a female. They are also 60-90% heavier in comparison.",
-         "The largest platypus ever measured was about 60cm long and weighed almost 3 kg."];
+         ["The back foot ankle spur of a male platypus contains a venom that is powerful enough to kill small animals such as dogs. The venom is not lethal to humans, but it can cause severe pain, that sometimes lasts for weeks.",
+         "The average lifespan of the duck-billed platypus is around 17 years. The platypus sleeps on average up to 14 hours per day.",
+         "A male platypus is normally 15-20% longer than a female. They are also 60-90% heavier in comparison. The largest platypus ever measured was about 60cm long and weighed almost 3 kg.",
+         "Platypuses and echidnas are the only two mammals in the world classed as monotremes which means that they lay eggs instead of giving birth. Females platypus lay 2 - 4 eggs, incubating them for two weeks.",
+         "The platypus is an excellent swimmer, diving under water on average for around 30 seconds to forage for food before coming up for air.",
+         "The platypus was hunted for its fur until the early 20th century. It is now an Australian protected species."];
         var selectedFact = factsArray[Math.floor(Math.random() * factsArray.length)];
         console.log(selectedFact);
         document.getElementById('selectedFactOutput').innerHTML = selectedFact;
      </script>
-    </body>
+     </body>
 </html>
