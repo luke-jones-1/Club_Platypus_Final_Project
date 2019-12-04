@@ -21,18 +21,18 @@
     <div class="container-fluid">
     <div class="form">
         <form action="/sign-up" method="post">
-        First Name: <input type="text" name="first_name"/>
+        First Name: <input type="text" name="first_name" required/>
         <br>
-        Last Name: <input type="text" name="last_name"/>
+        Last Name: <input type="text" name="last_name" required/>
         <br>
-        Email address: <input type="text" name="email"/>
+        Email address: <input type="email" name="email" required/>
         <br>
-        Password: <input type="text" name="password"/>
+        Password: <input type="password" name="password" required/>
         <br>
         <br>
         Colour of Platypus:
         <br>
-        <input type="radio" name="platypus_colour" value="blue"> Blue<br>
+        <input type="radio" name="platypus_colour" value="blue" required> Blue<br>
         <input type="radio" name="platypus_colour" value="red"> Red<br>
         <input type="radio" name="platypus_colour" value="yellow"> Yellow<br>
         <input type="radio" name="platypus_colour" value="pink"> Pink<br>
