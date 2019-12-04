@@ -51,3 +51,5 @@ function insertBottom(targetId, message) {
 // document.get... is Jquery
 // finds html element with id of argument given
 function id(id){ return document.getElementById(id);}
+
+

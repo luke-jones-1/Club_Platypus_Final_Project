@@ -104,4 +104,3 @@ public class Sql2oModel implements Model, UserModel, ChatModel {
     }
 
 }
-
