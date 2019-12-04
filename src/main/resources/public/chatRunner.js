@@ -5,6 +5,12 @@
 // to update the chat when new message created
 webSocket.onmessage = function (msg) { updateChat(msg); };
 
+
+var room = true;
+
+webSocket.onopen = function(msg){
+    switchChat();
+}
 // creates a pop-up when websocket times-out/closes
 webSocket.onclose = function (msg) {
     alert("WebSocket connection closed");
@@ -16,6 +22,10 @@ id("send").addEventListener("click", function () {
     sendMessage(id("message").value);
 });
 
+id("checkBoxState").addEventListener("click", function (){
+  room = !room;
+  switchChat();
+})
 //Jquery
 // waits for user to press enter then calls sendMessage function with arg message value
 id("message").addEventListener("keypress", function(e) {
@@ -33,7 +43,11 @@ function sendMessage(message) {
 
 function updateChat(msg) {
     var data = JSON.parse(msg.data); //Accepts incoming message info
-    insertBottom("chatLog", data.userMessage); // calls insert function on parsed data passed though websocket from paddlechat
+    if(room){
+    insertBottom("chatLogRoom1", data.userMessage); // calls insert function on parsed data passed though websocket from paddlechat
+    } else {
+    insertBottom("chatLogRoom2", data.userMessage);
+    }
     id("userlist").innerHTML = "";
     insertTop("userlist", data.userlist)
 }
@@ -51,3 +65,17 @@ function insertBottom(targetId, message) {
 // document.get... is Jquery
 // finds html element with id of argument given
 function id(id){ return document.getElementById(id);}
+
+function switchChat(){
+var element = document.getElementById('navIdentifier');
+    var content;
+
+    if  (room) {
+        content = '<div class="jumbotron" id="chatLogRoom1"><p><Chat1/p> </div>';
+    }
+    if  (!room) {
+        content = '<div class="jumbotron" id="chatLogRoom2"><p><Chat2/p> </div>';
+    }
+
+    element.innerHTML = content;
+}
