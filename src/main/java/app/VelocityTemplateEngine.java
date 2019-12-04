@@ -79,11 +79,19 @@ public class VelocityTemplateEngine extends TemplateEngine {
         String templateEncoding = Optional.ofNullable(this.encoding).orElse(StandardCharsets.UTF_8.name());
         Template template = velocityEngine.getTemplate(modelAndView.getViewName(), templateEncoding);
         Object model = modelAndView.getModel();
+//        System.out.println("modelAndView: " + modelAndView);
+//        System.out.println("model: " + model);
         if (model instanceof Map) {
+//            System.out.println("i passed");
             Map<?, ?> modelMap = (Map<?, ?>) model;
+//            System.out.println("modelMap: " + modelMap);
             VelocityContext context = new VelocityContext(modelMap);
+//            System.out.println("context: " + context);
             StringWriter writer = new StringWriter();
+//            System.out.println("String writer: " + writer);
             template.merge(context, writer);
+//            System.out.println("String writer: " + writer);
+//            System.out.println("template: " + template);
             return writer.toString();
         } else {
             throw new IllegalArgumentException("modelAndView must be of type java.util.Map");

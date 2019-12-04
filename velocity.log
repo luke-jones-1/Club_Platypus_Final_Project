@@ -1,33 +1,31 @@
-2019-11-18 16:34:28,723 - ResourceManager : unable to find resource 'template/newPost.vtl' in any resource loader.
-2019-11-18 16:35:29,368 - ResourceManager : unable to find resource 'template/newPost.vtl' in any resource loader.
-2019-11-18 16:38:03,480 - ResourceManager : unable to find resource 'template/newPost.vtl' in any resource loader.
-2019-11-18 16:38:03,480 - ResourceManager : unable to find resource 'template/newPost.vtl' in any resource loader.
-2019-11-20 14:25:48,709 - Parser Exception: templates/posts.vtl
-org.apache.velocity.runtime.parser.ParseException: Encountered "{" at line 12, column 53.
+2019-12-04 14:42:34,700 - Parser Exception: templates/room.vtl
+org.apache.velocity.runtime.parser.ParseException: Encountered "null" at line 114, column 34.
 Was expecting one of:
     "[" ...
-    <RPAREN> ...
-    <WHITESPACE> ...
-    "-" ...
-    "+" ...
-    "*" ...
-    "/" ...
-    "%" ...
-    <LOGICAL_AND> ...
-    <LOGICAL_OR> ...
-    <LOGICAL_LT> ...
-    <LOGICAL_LE> ...
-    <LOGICAL_GT> ...
-    <LOGICAL_GE> ...
-    <LOGICAL_EQUALS> ...
-    <LOGICAL_NOT_EQUALS> ...
+    "{" ...
+    "(" ...
+    <STRING_LITERAL> ...
+    "true" ...
+    "false" ...
+    <INTEGER_LITERAL> ...
+    <FLOATING_POINT_LITERAL> ...
+    <IDENTIFIER> ...
+    "{" ...
+    "[" ...
     
 	at org.apache.velocity.runtime.parser.Parser.generateParseException(Parser.java:3679)
 	at org.apache.velocity.runtime.parser.Parser.jj_consume_token(Parser.java:3558)
-	at org.apache.velocity.runtime.parser.Parser.IfStatement(Parser.java:1656)
+	at org.apache.velocity.runtime.parser.Parser.PrimaryExpression(Parser.java:2644)
+	at org.apache.velocity.runtime.parser.Parser.UnaryExpression(Parser.java:2586)
+	at org.apache.velocity.runtime.parser.Parser.MultiplicativeExpression(Parser.java:2435)
+	at org.apache.velocity.runtime.parser.Parser.AdditiveExpression(Parser.java:2359)
+	at org.apache.velocity.runtime.parser.Parser.RelationalExpression(Parser.java:2227)
+	at org.apache.velocity.runtime.parser.Parser.EqualityExpression(Parser.java:2197)
+	at org.apache.velocity.runtime.parser.Parser.ConditionalAndExpression(Parser.java:2111)
+	at org.apache.velocity.runtime.parser.Parser.ConditionalOrExpression(Parser.java:2071)
+	at org.apache.velocity.runtime.parser.Parser.Expression(Parser.java:2018)
+	at org.apache.velocity.runtime.parser.Parser.IfStatement(Parser.java:1655)
 	at org.apache.velocity.runtime.parser.Parser.Statement(Parser.java:352)
-	at org.apache.velocity.runtime.parser.Parser.Directive(Parser.java:918)
-	at org.apache.velocity.runtime.parser.Parser.Statement(Parser.java:379)
 	at org.apache.velocity.runtime.parser.Parser.process(Parser.java:317)
 	at org.apache.velocity.runtime.parser.Parser.parse(Parser.java:117)
 	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1226)
@@ -37,7 +35,7 @@ Was expecting one of:
 	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
 	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
 	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
-	at app.VelocityTemplateEngine.render(app.VelocityTemplateEngine.java:79)
+	at app.VelocityTemplateEngine.render(VelocityTemplateEngine.java:80)
 	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:61)
 	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:58)
 	at spark.TemplateViewRouteImpl.render(TemplateViewRouteImpl.java:86)
@@ -46,108 +44,7 @@ Was expecting one of:
 	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
 	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
 	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
-	at org.eclipse.jetty.server.Server.handle(Server.java:530)
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
-	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
-	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
-	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
-	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
-	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-20 14:25:48,713 - ResourceManager.getResource() parse exception
-org.apache.velocity.exception.ParseErrorException: Encountered "{" at templates/posts.vtl[line 12, column 53]
-Was expecting one of:
-    "[" ...
-    <RPAREN> ...
-    <WHITESPACE> ...
-    "-" ...
-    "+" ...
-    "*" ...
-    "/" ...
-    "%" ...
-    <LOGICAL_AND> ...
-    <LOGICAL_OR> ...
-    <LOGICAL_LT> ...
-    <LOGICAL_LE> ...
-    <LOGICAL_GT> ...
-    <LOGICAL_GE> ...
-    <LOGICAL_EQUALS> ...
-    <LOGICAL_NOT_EQUALS> ...
-    
-	at org.apache.velocity.Template.process(Template.java:151)
-	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
-	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
-	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
-	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
-	at app.VelocityTemplateEngine.render(app.VelocityTemplateEngine.java:79)
-	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:61)
-	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:58)
-	at spark.TemplateViewRouteImpl.render(TemplateViewRouteImpl.java:86)
-	at spark.http.matching.Routes.execute(Routes.java:63)
-	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:130)
-	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
-	at org.eclipse.jetty.server.Server.handle(Server.java:530)
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
-	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
-	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
-	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
-	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
-	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-20 14:25:50,523 - Parser Exception: templates/posts.vtl
-org.apache.velocity.runtime.parser.ParseException: Encountered "{" at line 12, column 53.
-Was expecting one of:
-    "[" ...
-    <RPAREN> ...
-    <WHITESPACE> ...
-    "-" ...
-    "+" ...
-    "*" ...
-    "/" ...
-    "%" ...
-    <LOGICAL_AND> ...
-    <LOGICAL_OR> ...
-    <LOGICAL_LT> ...
-    <LOGICAL_LE> ...
-    <LOGICAL_GT> ...
-    <LOGICAL_GE> ...
-    <LOGICAL_EQUALS> ...
-    <LOGICAL_NOT_EQUALS> ...
-    
-	at org.apache.velocity.runtime.parser.Parser.generateParseException(Parser.java:3679)
-	at org.apache.velocity.runtime.parser.Parser.jj_consume_token(Parser.java:3558)
-	at org.apache.velocity.runtime.parser.Parser.IfStatement(Parser.java:1656)
-	at org.apache.velocity.runtime.parser.Parser.Statement(Parser.java:352)
-	at org.apache.velocity.runtime.parser.Parser.Directive(Parser.java:918)
-	at org.apache.velocity.runtime.parser.Parser.Statement(Parser.java:379)
-	at org.apache.velocity.runtime.parser.Parser.process(Parser.java:317)
-	at org.apache.velocity.runtime.parser.Parser.parse(Parser.java:117)
-	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1226)
-	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1181)
-	at org.apache.velocity.Template.process(Template.java:134)
-	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
-	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
-	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
-	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
-	at app.VelocityTemplateEngine.render(app.VelocityTemplateEngine.java:79)
-	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:61)
-	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:58)
-	at spark.TemplateViewRouteImpl.render(TemplateViewRouteImpl.java:86)
-	at spark.http.matching.Routes.execute(Routes.java:63)
-	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:130)
-	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
 	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
 	at org.eclipse.jetty.server.Server.handle(Server.java:530)
 	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
@@ -162,32 +59,44 @@ Was expecting one of:
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-20 14:25:50,527 - ResourceManager.getResource() parse exception
-org.apache.velocity.exception.ParseErrorException: Encountered "{" at templates/posts.vtl[line 12, column 53]
+2019-12-04 14:42:34,700 - Parser Exception: templates/room.vtl
+org.apache.velocity.runtime.parser.ParseException: Encountered "null" at line 114, column 34.
 Was expecting one of:
     "[" ...
-    <RPAREN> ...
-    <WHITESPACE> ...
-    "-" ...
-    "+" ...
-    "*" ...
-    "/" ...
-    "%" ...
-    <LOGICAL_AND> ...
-    <LOGICAL_OR> ...
-    <LOGICAL_LT> ...
-    <LOGICAL_LE> ...
-    <LOGICAL_GT> ...
-    <LOGICAL_GE> ...
-    <LOGICAL_EQUALS> ...
-    <LOGICAL_NOT_EQUALS> ...
+    "{" ...
+    "(" ...
+    <STRING_LITERAL> ...
+    "true" ...
+    "false" ...
+    <INTEGER_LITERAL> ...
+    <FLOATING_POINT_LITERAL> ...
+    <IDENTIFIER> ...
+    "{" ...
+    "[" ...
     
-	at org.apache.velocity.Template.process(Template.java:151)
+	at org.apache.velocity.runtime.parser.Parser.generateParseException(Parser.java:3679)
+	at org.apache.velocity.runtime.parser.Parser.jj_consume_token(Parser.java:3558)
+	at org.apache.velocity.runtime.parser.Parser.PrimaryExpression(Parser.java:2644)
+	at org.apache.velocity.runtime.parser.Parser.UnaryExpression(Parser.java:2586)
+	at org.apache.velocity.runtime.parser.Parser.MultiplicativeExpression(Parser.java:2435)
+	at org.apache.velocity.runtime.parser.Parser.AdditiveExpression(Parser.java:2359)
+	at org.apache.velocity.runtime.parser.Parser.RelationalExpression(Parser.java:2227)
+	at org.apache.velocity.runtime.parser.Parser.EqualityExpression(Parser.java:2197)
+	at org.apache.velocity.runtime.parser.Parser.ConditionalAndExpression(Parser.java:2111)
+	at org.apache.velocity.runtime.parser.Parser.ConditionalOrExpression(Parser.java:2071)
+	at org.apache.velocity.runtime.parser.Parser.Expression(Parser.java:2018)
+	at org.apache.velocity.runtime.parser.Parser.IfStatement(Parser.java:1655)
+	at org.apache.velocity.runtime.parser.Parser.Statement(Parser.java:352)
+	at org.apache.velocity.runtime.parser.Parser.process(Parser.java:317)
+	at org.apache.velocity.runtime.parser.Parser.parse(Parser.java:117)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1226)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1181)
+	at org.apache.velocity.Template.process(Template.java:134)
 	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
 	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
 	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
 	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
-	at app.VelocityTemplateEngine.render(app.VelocityTemplateEngine.java:79)
+	at app.VelocityTemplateEngine.render(VelocityTemplateEngine.java:80)
 	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:61)
 	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:58)
 	at spark.TemplateViewRouteImpl.render(TemplateViewRouteImpl.java:86)
@@ -196,6 +105,7 @@ Was expecting one of:
 	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
 	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
 	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
 	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
 	at org.eclipse.jetty.server.Server.handle(Server.java:530)
 	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
@@ -210,8 +120,301 @@ Was expecting one of:
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-25 14:21:51,134 - ResourceManager : unable to find resource 'templates/sign-in.vtl' in any resource loader.
-2019-11-25 14:21:51,572 - ResourceManager : unable to find resource 'templates/sign-in.vtl' in any resource loader.
-2019-11-25 14:22:01,993 - ResourceManager : unable to find resource 'templates/sign-up.vtl' in any resource loader.
-2019-11-25 14:22:01,993 - ResourceManager : unable to find resource 'templates/sign-up.vtl' in any resource loader.
-2019-11-25 14:34:37,057 - ResourceManager : unable to find resource 'templates/sign-in.vtl' in any resource loader.
+2019-12-04 14:42:34,700 - Parser Exception: templates/room.vtl
+org.apache.velocity.runtime.parser.ParseException: Encountered "null" at line 114, column 34.
+Was expecting one of:
+    "[" ...
+    "{" ...
+    "(" ...
+    <STRING_LITERAL> ...
+    "true" ...
+    "false" ...
+    <INTEGER_LITERAL> ...
+    <FLOATING_POINT_LITERAL> ...
+    <IDENTIFIER> ...
+    "{" ...
+    "[" ...
+    
+	at org.apache.velocity.runtime.parser.Parser.generateParseException(Parser.java:3679)
+	at org.apache.velocity.runtime.parser.Parser.jj_consume_token(Parser.java:3558)
+	at org.apache.velocity.runtime.parser.Parser.PrimaryExpression(Parser.java:2644)
+	at org.apache.velocity.runtime.parser.Parser.UnaryExpression(Parser.java:2586)
+	at org.apache.velocity.runtime.parser.Parser.MultiplicativeExpression(Parser.java:2435)
+	at org.apache.velocity.runtime.parser.Parser.AdditiveExpression(Parser.java:2359)
+	at org.apache.velocity.runtime.parser.Parser.RelationalExpression(Parser.java:2227)
+	at org.apache.velocity.runtime.parser.Parser.EqualityExpression(Parser.java:2197)
+	at org.apache.velocity.runtime.parser.Parser.ConditionalAndExpression(Parser.java:2111)
+	at org.apache.velocity.runtime.parser.Parser.ConditionalOrExpression(Parser.java:2071)
+	at org.apache.velocity.runtime.parser.Parser.Expression(Parser.java:2018)
+	at org.apache.velocity.runtime.parser.Parser.IfStatement(Parser.java:1655)
+	at org.apache.velocity.runtime.parser.Parser.Statement(Parser.java:352)
+	at org.apache.velocity.runtime.parser.Parser.process(Parser.java:317)
+	at org.apache.velocity.runtime.parser.Parser.parse(Parser.java:117)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1226)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1181)
+	at org.apache.velocity.Template.process(Template.java:134)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at app.VelocityTemplateEngine.render(VelocityTemplateEngine.java:80)
+	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:61)
+	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:58)
+	at spark.TemplateViewRouteImpl.render(TemplateViewRouteImpl.java:86)
+	at spark.http.matching.Routes.execute(Routes.java:63)
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:130)
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:530)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:382)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+2019-12-04 14:42:34,700 - Parser Exception: templates/room.vtl
+org.apache.velocity.runtime.parser.ParseException: Encountered "null" at line 114, column 34.
+Was expecting one of:
+    "[" ...
+    "{" ...
+    "(" ...
+    <STRING_LITERAL> ...
+    "true" ...
+    "false" ...
+    <INTEGER_LITERAL> ...
+    <FLOATING_POINT_LITERAL> ...
+    <IDENTIFIER> ...
+    "{" ...
+    "[" ...
+    
+	at org.apache.velocity.runtime.parser.Parser.generateParseException(Parser.java:3679)
+	at org.apache.velocity.runtime.parser.Parser.jj_consume_token(Parser.java:3558)
+	at org.apache.velocity.runtime.parser.Parser.PrimaryExpression(Parser.java:2644)
+	at org.apache.velocity.runtime.parser.Parser.UnaryExpression(Parser.java:2586)
+	at org.apache.velocity.runtime.parser.Parser.MultiplicativeExpression(Parser.java:2435)
+	at org.apache.velocity.runtime.parser.Parser.AdditiveExpression(Parser.java:2359)
+	at org.apache.velocity.runtime.parser.Parser.RelationalExpression(Parser.java:2227)
+	at org.apache.velocity.runtime.parser.Parser.EqualityExpression(Parser.java:2197)
+	at org.apache.velocity.runtime.parser.Parser.ConditionalAndExpression(Parser.java:2111)
+	at org.apache.velocity.runtime.parser.Parser.ConditionalOrExpression(Parser.java:2071)
+	at org.apache.velocity.runtime.parser.Parser.Expression(Parser.java:2018)
+	at org.apache.velocity.runtime.parser.Parser.IfStatement(Parser.java:1655)
+	at org.apache.velocity.runtime.parser.Parser.Statement(Parser.java:352)
+	at org.apache.velocity.runtime.parser.Parser.process(Parser.java:317)
+	at org.apache.velocity.runtime.parser.Parser.parse(Parser.java:117)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1226)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1181)
+	at org.apache.velocity.Template.process(Template.java:134)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at app.VelocityTemplateEngine.render(VelocityTemplateEngine.java:80)
+	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:61)
+	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:58)
+	at spark.TemplateViewRouteImpl.render(TemplateViewRouteImpl.java:86)
+	at spark.http.matching.Routes.execute(Routes.java:63)
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:130)
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:530)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:382)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+2019-12-04 14:42:34,709 - ResourceManager.getResource() parse exception
+org.apache.velocity.exception.ParseErrorException: Encountered "null" at templates/room.vtl[line 114, column 34]
+Was expecting one of:
+    "[" ...
+    "{" ...
+    "(" ...
+    <STRING_LITERAL> ...
+    "true" ...
+    "false" ...
+    <INTEGER_LITERAL> ...
+    <FLOATING_POINT_LITERAL> ...
+    <IDENTIFIER> ...
+    "{" ...
+    "[" ...
+    
+	at org.apache.velocity.Template.process(Template.java:151)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at app.VelocityTemplateEngine.render(VelocityTemplateEngine.java:80)
+	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:61)
+	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:58)
+	at spark.TemplateViewRouteImpl.render(TemplateViewRouteImpl.java:86)
+	at spark.http.matching.Routes.execute(Routes.java:63)
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:130)
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:530)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:382)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+2019-12-04 14:42:34,709 - ResourceManager.getResource() parse exception
+org.apache.velocity.exception.ParseErrorException: Encountered "null" at templates/room.vtl[line 114, column 34]
+Was expecting one of:
+    "[" ...
+    "{" ...
+    "(" ...
+    <STRING_LITERAL> ...
+    "true" ...
+    "false" ...
+    <INTEGER_LITERAL> ...
+    <FLOATING_POINT_LITERAL> ...
+    <IDENTIFIER> ...
+    "{" ...
+    "[" ...
+    
+	at org.apache.velocity.Template.process(Template.java:151)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at app.VelocityTemplateEngine.render(VelocityTemplateEngine.java:80)
+	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:61)
+	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:58)
+	at spark.TemplateViewRouteImpl.render(TemplateViewRouteImpl.java:86)
+	at spark.http.matching.Routes.execute(Routes.java:63)
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:130)
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:530)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:382)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+2019-12-04 14:42:34,709 - ResourceManager.getResource() parse exception
+org.apache.velocity.exception.ParseErrorException: Encountered "null" at templates/room.vtl[line 114, column 34]
+Was expecting one of:
+    "[" ...
+    "{" ...
+    "(" ...
+    <STRING_LITERAL> ...
+    "true" ...
+    "false" ...
+    <INTEGER_LITERAL> ...
+    <FLOATING_POINT_LITERAL> ...
+    <IDENTIFIER> ...
+    "{" ...
+    "[" ...
+    
+	at org.apache.velocity.Template.process(Template.java:151)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at app.VelocityTemplateEngine.render(VelocityTemplateEngine.java:80)
+	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:61)
+	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:58)
+	at spark.TemplateViewRouteImpl.render(TemplateViewRouteImpl.java:86)
+	at spark.http.matching.Routes.execute(Routes.java:63)
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:130)
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:530)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:382)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+2019-12-04 14:42:34,709 - ResourceManager.getResource() parse exception
+org.apache.velocity.exception.ParseErrorException: Encountered "null" at templates/room.vtl[line 114, column 34]
+Was expecting one of:
+    "[" ...
+    "{" ...
+    "(" ...
+    <STRING_LITERAL> ...
+    "true" ...
+    "false" ...
+    <INTEGER_LITERAL> ...
+    <FLOATING_POINT_LITERAL> ...
+    <IDENTIFIER> ...
+    "{" ...
+    "[" ...
+    
+	at org.apache.velocity.Template.process(Template.java:151)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at app.VelocityTemplateEngine.render(VelocityTemplateEngine.java:80)
+	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:61)
+	at spark.TemplateViewRouteImpl$1.render(TemplateViewRouteImpl.java:58)
+	at spark.TemplateViewRouteImpl.render(TemplateViewRouteImpl.java:86)
+	at spark.http.matching.Routes.execute(Routes.java:63)
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:130)
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:530)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:382)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
+	at java.base/java.lang.Thread.run(Thread.java:830)

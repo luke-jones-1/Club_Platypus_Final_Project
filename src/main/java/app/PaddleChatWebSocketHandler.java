@@ -14,37 +14,27 @@ public class PaddleChatWebSocketHandler {
     private ChatModel chat;// defines a null chat which is a type of chatmodel
     private User sender;
     private String msg;
-    private UserModel usermodel;
     // gets called when web page loaded
 
 
      // constructor
-    public PaddleChatWebSocketHandler(ChatModel chat,UserModel usermodel){ // starts constructor and takes a instance of chat class
+    public PaddleChatWebSocketHandler(ChatModel chat){ // starts constructor and takes a instance of chat class
         this.chat = chat; // initializes chat as the argument so chat can be used in the socket handler
-        this.usermodel = usermodel;
     }
 
     @OnWebSocketConnect
     public void onConnect(Session user) throws Exception {
-        List<Chat> log = chat.getAllChatMessages();
-      //  System.out.println("************");
-      //  System.out.println(log);
-      //  System.out.println("************");
+
         // for loop for entire of log
-        for (Chat chatinstance : log) {
-            System.out.println(chatinstance);
-            System.out.println(chatinstance.getClass());
-            // user class from user id
-            User currentuser = usermodel.fetchUserById(chatinstance.getUser_id().toString());
-            System.out.println(currentuser);
-            System.out.println(currentuser.getClass());
-            // call broadcast message
-            PaddleChat.broadcastMessage(currentuser, chatinstance.getContent()); // message from instance of chat inside log
-            System.out.println(chatinstance.getContent());
-            System.out.println("i just posted a message");
-        }
+//        for (Chat chatinstance : log) {
+//            // user class from user id
+//            User currentuser = usermodel.fetchUserById(chatinstance.getUser_id().toString());
+//            // call broadcast message
+//            PaddleChat.broadcastMessage(currentuser, chatinstance.getContent()); // message from instance of chat inside log
+//        }
         PaddleChat.userUsernameMap.put(user, PaddleChat.currentUserClass); // adds an element to userUsernameMap
         PaddleChat.broadcastServerMessage(msg = (PaddleChat.userUsernameMap.get(user).getUsername() + " joined the Paddle"));
+        PaddleChat.currentUserClass = null;
     }
 
     // gets called whenever a websocket is closed
