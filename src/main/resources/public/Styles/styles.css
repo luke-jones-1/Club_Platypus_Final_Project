@@ -170,3 +170,33 @@
     margin-left: 15%;
     float:left;
     }
+
+    body{
+      box-sizing: border-box;
+      min-height: 100vh;
+      margin: 0;
+    }
+    #emojiContainer{
+    }
+    .emojiKeyboard{
+      width: 44%;
+      border: 1px solid #0d8cfc;
+      background-color: aliceblue;
+    }
+    .emojis{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .emojiFrame{
+      box-sizing: content-box;
+      text-align: center;
+      width: 30px;
+      font-size: 21px;
+      padding: 3px;
+      margin: 3px;
+      background-color: transparent;
+    }
+    .emojiFrame:hover{
+      background-color: #0d8cfc;
+    }
