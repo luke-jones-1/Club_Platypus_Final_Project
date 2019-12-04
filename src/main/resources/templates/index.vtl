@@ -10,7 +10,7 @@
          h1 {font-family: 'Roboto Slab', serif;}
          p {font-family: 'Roboto Slab', serif;}
          end {font-family: 'Lato', sans-serif;}
-    #signUp, #signIn { background-color: grey; }
+    #signUp, #signIn { background-color: #D0D0D0; }
      </style>
       <body>
    	<div class="jumbotron">
@@ -20,18 +20,31 @@
     <div class="container-fluid">
     <p>Get started below:</p>
     <form>
-        <button type="submit" formAction="/sign-up" class="btn btn-secondary">
-            <span class="glyphicon glyphicon-save" aria-hidden="true">
-        </span>Sign up</button>
-        <button type="submit" formAction="/sign-in" class = "btn btn-secondary">
-            <span class="glyphicon glyphicon-save" aria-hidden="true">
-        </span>Sign in</button>
+        <button type="submit" formAction="/sign-up" class="btn" id="signUp">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true">
+        </span>  Sign up</button>
+        <button type="submit" formAction="/sign-in" class ="btn" id="signIn">
+            <span class="glyphicon glyphicon-log-in" aria-hidden="true">
+        </span>  Sign in</button>
     </form>
         <br>
         <br>
+        <p>Platypus Fun Fact!</p>
+        <p id="selectedFactOutput"></p>
         <br>
         <br>
          <end>Created by Luke Jones, Albion Bidder, Josie Pollard, Toby Young and Will Bath at CGI Bristol.</end>
      </div>
+     <script>
+        var factsArray =
+        ["A platypus can live more than 12 years in the wild! Their predators include snakes, hawks, owls, eagles and sometimes crocodiles.",
+         "Male Platypods have a toxic barb on the back of their hind feet. This contains a neurotoxin-like substance that causes immense pain in humans.",
+         "The average lifespan of the duck-billed platypus is around 17 years.",
+         "A male platypus is normally 15-20% longer than a female. They are also 60-90% heavier in comparison.",
+         "The largest platypus ever measured was about 60cm long and weighed almost 3 kg."];
+        var selectedFact = factsArray[Math.floor(Math.random() * factsArray.length)];
+        console.log(selectedFact);
+        document.getElementById('selectedFactOutput').innerHTML = selectedFact;
+     </script>
     </body>
 </html>
