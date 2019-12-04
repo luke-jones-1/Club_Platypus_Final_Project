@@ -94,6 +94,7 @@ public class Main {
                 SetPaddle(userModel, email);
                 res.redirect("/room");
             }
+            else { res.redirect("/sign-in"); }
             return null;
         });
 
