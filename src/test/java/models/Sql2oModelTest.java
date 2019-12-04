@@ -155,4 +155,13 @@ class Sql2oModelTest {
         assertEquals("Albion Bidder", userinstance.getUsername());
     }
 
+    @Test
+    void canFetchUserById(){
+        userModel.createUser("Sir","Bath", "password", "a@b.c", "real");
+        User expectedUser = userModel.fetchUser("a@b.c");
+        String Id = expectedUser.getId().toString();
+        User Actual = userModel.fetchUserById(Id);
+        assertEquals(Actual, expectedUser);
+    }
+
 }

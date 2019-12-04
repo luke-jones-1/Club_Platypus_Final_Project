@@ -69,6 +69,16 @@ public class Sql2oModel implements Model, UserModel, ChatModel {
         }
     }
 
+    public User fetchUserById(String id) {
+        try (Connection conn = sql2o.open()) {
+            List<User> userList = conn.createQuery("select * from users where id = :id") //gets ID from users table, using ID stored in SessionID
+                    .addParameter("id",id)
+                    .executeAndFetch(User.class);
+            User user = userList.get(0);
+            return user;
+        }
+    }
+
 //    Methods used for chatlog table
 
     public void addChatMessage(String user_id, String time_created, String date_created, String content){
@@ -94,4 +104,3 @@ public class Sql2oModel implements Model, UserModel, ChatModel {
     }
 
 }
-

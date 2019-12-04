@@ -2,6 +2,7 @@ package app;
 
 import models.*;
 import org.apache.log4j.BasicConfigurator;
+import org.apache.velocity.app.Velocity;
 import org.flywaydb.core.Flyway;
 import org.sql2o.Sql2o;
 import org.sql2o.converters.UUIDConverter;
@@ -18,6 +19,7 @@ public class Main {
 
         staticFileLocation("/public");
         port(getHerokuAssignedPort());
+        Velocity.init();
 
         String dbHost = "localhost";
         String dbName = "cgi_platypi";
@@ -45,11 +47,11 @@ public class Main {
 
         Model model = new Sql2oModel(sql2o);
         UserModel userModel = new Sql2oModel(sql2o);
-        ChatModel chat = new Sql2oModel(sql2o); // creates instance of chatmodel
-        PaddleChatWebSocketHandler PaddleChatWebSocket = new PaddleChatWebSocketHandler(chat);
+        ChatModel chatModel = new Sql2oModel(sql2o); // creates instance of chatmodel
+        PaddleChatWebSocketHandler PaddleChatWebSocket = new PaddleChatWebSocketHandler(chatModel);
         // passes chat instance into paddlechat socket handler so that it can be used inside the class
         webSocket("/chat", PaddleChatWebSocket);// loads the web socket with the instance of paddlechathandler
-        init();
+
 
         //Frontpage method
         get("/", (req, res) -> {
@@ -59,11 +61,20 @@ public class Main {
 
 
         get("/room", (req, res) -> {
-            HashMap room = new HashMap();
+            Map<Chat, User> chatLog = new HashMap<>();
             if (PaddleChat.currentUserClass == null){
                 res.redirect("/");
             }
-            return new ModelAndView(room, "public/room.html");
+            List<Chat> log = chatModel.getAllChatMessages();
+//             for loop for entire of log
+            for (Chat chatInstance : log) {
+            // user class from user id
+                User currentUser = userModel.fetchUserById(chatInstance.getUser_id().toString());
+            // call broadcast message
+                chatLog.put(chatInstance, currentUser);
+            }
+//            System.out.println(chats.keySet());
+            return new ModelAndView(chatLog, "templates/room.vtl");
         }, new VelocityTemplateEngine());
 
 

@@ -7,6 +7,7 @@ import models.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 @WebSocket(maxIdleTime=1000000000)
 public class PaddleChatWebSocketHandler {
@@ -23,8 +24,17 @@ public class PaddleChatWebSocketHandler {
 
     @OnWebSocketConnect
     public void onConnect(Session user) throws Exception {
+
+        // for loop for entire of log
+//        for (Chat chatinstance : log) {
+//            // user class from user id
+//            User currentuser = usermodel.fetchUserById(chatinstance.getUser_id().toString());
+//            // call broadcast message
+//            PaddleChat.broadcastMessage(currentuser, chatinstance.getContent()); // message from instance of chat inside log
+//        }
         PaddleChat.userUsernameMap.put(user, PaddleChat.currentUserClass); // adds an element to userUsernameMap
         PaddleChat.broadcastServerMessage(msg = (PaddleChat.userUsernameMap.get(user).getUsername() + " joined the Paddle"));
+        PaddleChat.currentUserClass = null;
     }
 
     // gets called whenever a websocket is closed

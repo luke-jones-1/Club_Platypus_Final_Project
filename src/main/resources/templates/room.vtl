@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200i&display=swap" rel="stylesheet">
+        <link rel="shortcut icon"  href="../images/Favicon/PlatypusEmoji.ico" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="../Styles/styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Room 1</title>
+    </head>
+    <body>
+    <div class="container">
+        <div class="jumbotron" id="header">
+            <label class="switch">
+                <input id="checkBoxState" type="checkbox">
+                <span class="slider">
+                            <p class="innerNum">1</p>
+                            <p class="innerNum">2</p>
+                        </span>
+            </label>
+            <p style="float:right; font-size:20;">Room</p>
+            <div aria-label="breadcrumb" id="header">
+                <ol class="breadcrumb" id="header">
+                    <li class="breadcrumb-item"><a href="/index.vtl">CGI Platypi</a></li>
+                </ol>
+
+            </div>
+        </div>
+        <div id="userListBox">
+            <div id="userlist"> <!-- Built by JS --> </div><br>
+        </div>
+
+        <nav id="navIdentifier">
+           <!-- <div class="jumbotron" id="chatLog">
+                #if( $chatLog.isempty)
+                    <p>its empty</p>
+                #else
+                    <!-- used to try to get visibility -->
+                #end
+                #foreach( $key in $chatLog.keySet() )
+                    <p>$key $chatLog.get($key)</p>
+                    <p>happiness noises</p>
+                #end
+            </div>-->
+        </nav>
+
+
+
+        <div>
+            <textarea id="message" placeholder="Type your message" class="form-control"></textarea>
+            <button class="btn btn-secondary btn-sm" id="send">Send</button>
+
+        </div>
+        <div class="jumbotron  container" id="header">
+            <!-- emoji keyboard -->
+            <div id="emojiContainer">
+                <div class="emojiKeyboard">
+                    <div class="emojis">
+                        <div class="emojiFrame"><span class="emoji">&#128540;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128513;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128514;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128515;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128516;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128517;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128518;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128519;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128521;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128522;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128523;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128524;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128525;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128526;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128527;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128528;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128529;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128530;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128531;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128532;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128533;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128534;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128535;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128536;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128537;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#128538;</span></div>
+                        <div class="emojiFrame"><span class="emoji">&#129312;</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script src="chatRunner.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    </body>
+</html>
