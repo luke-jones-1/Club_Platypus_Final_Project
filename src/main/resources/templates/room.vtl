@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
@@ -170,6 +171,15 @@
         </div>
         <nav>
             <div class="jumbotron" id="chatLog">
+                #if( $chatLog.isempty)
+                    <p>its empty</p>
+                #else
+                    <!-- used to try to get visibility -->
+                #end
+                #foreach( $key in $chatLog.keySet() )
+                    <p>$key $chatLog.get($key)</p>
+                    <p>happiness noises</p>
+                #end
             </div>
         </nav>
 
