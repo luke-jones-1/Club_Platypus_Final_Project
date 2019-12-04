@@ -19,4 +19,10 @@ public class Chat {
         this.date_created = date_created;
         this.content = content;
     }
+    public UUID getUser_id(){
+        return user_id;
+    }
+    public String getContent(){
+        return content;
+    }
 }
