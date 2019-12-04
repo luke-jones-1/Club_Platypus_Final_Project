@@ -101,7 +101,7 @@
                 #send{
                     font-family: 'Roboto Slab', serif;
                 font-size: 11px;
-                background-color: whitesmoke;
+                background-color: #D0D0D0;
                 height: 7%;
                 width: 7%;
                 }
@@ -115,6 +115,13 @@
                 #userlist{
                     font-family: 'Roboto Slab', serif;
                     font-size: 11px;
+                }
+                #room-title{
+                color: #686868;
+                }
+
+                #room-number{
+                color: #686868;
                 }
 
                 <!-- emoji keyboard -->
@@ -159,12 +166,8 @@
     <body>
     <div class="container">
         <div class="jumbotron" id="header">
-            <nav aria-label="breadcrumb" id="header">
-                <ol class="breadcrumb" id="header">
-                    <li class="breadcrumb-item"><a href="/index.vtl">CGI Platypi</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Room 1</li>
-                </ol>
-            </nav>
+            <h2>CGI Platypi</h2>
+            <p>Room 1</p>
         </div>
         <div id="userListBox">
             <div id="userlist"> <!-- Built by JS --> </div><br>
@@ -187,7 +190,8 @@
 
         <div>
             <textarea id="message" placeholder="Type your message" class="form-control"></textarea>
-            <button class="btn btn-secondary btn-sm" id="send">Send</button>
+            <button class="btn btn-secondary btn-xs" id="send"><span class="glyphicon glyphicon-edit" aria-hidden="true">
+        </span>  Send</button>
         </div>
         <div class="jumbotron  container" id="header">
             <!-- emoji keyboard -->
