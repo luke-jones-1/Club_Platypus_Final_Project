@@ -5,47 +5,97 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="../images/Favicon/PlatypusEmoji.ico" type="image/x-icon">
      <style>
-         .jumbotron {background-color: turquoise;}
+         .jumbotron {background-color: turquoise; color: #234B46}
          h1 {font-family: 'Roboto Slab', serif;}
          p{font-family: 'Roboto Slab', serif;}
-         .container-fluid {padding:40px;}
-         .form {margin: 0; width: 150px; font-family: 'Roboto Slab', serif;}
-         #submitSignUp{background-color: grey;}
+         .container-fluid {padding-left:90px; padding-top: 20px;}
+         .form {
+             margin: 5;
+             width: 193px;
+             font-family: 'Roboto Slab', serif;
+             }
+         #submitSignUp{background-color: #D0D0D0;}
+         .radiobtnblue {color: #00D1FF; border-radius: 3px; padding-top: 3px;
+             padding-right: 5px;
+             padding-bottom: 3px;
+             padding-left: 5px;
+		border: solid;}
+        .radiobtnred {color: red; border-radius: 3px; padding-top: 3px;
+             padding-right: 5px;
+             padding-bottom: 3px;
+             padding-left: 5px;
+		border: solid}
+        .radiobtnyellow {color: #F9E907; border-radius: 3px; padding-top: 3px;
+             padding-right: 5px;
+             padding-bottom: 3px;
+             padding-left: 5px;
+		border: solid}
+        .radiobtnpink {color: #FE62F0; border-radius: 3px; padding-top: 3px;
+             padding-right: 5px;
+             padding-bottom: 3px;
+             padding-left: 5px;
+		border: solid}
+        .radiobtndarkblue {color: #0D56E9; border-radius: 3px; padding-top: 3px;
+             padding-right: 5px;
+             padding-bottom: 3px;
+             padding-left: 5px;
+		border: solid}
+        .radiobtnpurple {color: #7C36EF; border-radius: 3px; padding-top: 3px;
+             padding-right: 5px;
+             padding-bottom: 3px;
+             padding-left: 5px;
+		border: solid}
+      .radiobtngreen {color: #17C12E; border-radius: 3px; padding-top: 3px;
+             padding-right: 5px;
+             padding-bottom: 3px;
+             padding-left: 5px;
+		border: solid}
+        .radiobtnreal {color: #797979; border-radius: 3px; padding-top: 3px;
+             padding-right: 5px;
+             padding-bottom: 3px;
+             padding-left: 5px;
+		border: solid}
      </style>
     </head>
     <body>
     <div class="jumbotron">
         <h1>Sign up for CGI Platypi</h1>
-        <p>Fill in your details to register</p>
+        <p>Please fill in your details to register</p>
     </div>
     <div class="container-fluid">
     <div class="form">
         <form action="/sign-up" method="post">
-        First Name: <input type="text" name="first_name"/>
-        <br>
-        Last Name: <input type="text" name="last_name"/>
-        <br>
-        Email address: <input type="text" name="email"/>
-        <br>
-        Password: <input type="text" name="password"/>
+        First Name: <input type="text" name="first_name" required/>
+        <br><br>
+        Last Name: <input type="text" name="last_name" required/>
+        <br><br>
+        Email address: <input type="email" name="email" required/>
+        <br><br>
+        Password: <input type="password" name="password" required/>
         <br>
         <br>
         Colour of Platypus:
         <br>
-        <input type="radio" name="platypus_colour" value="blue"> Blue<br>
-        <input type="radio" name="platypus_colour" value="red"> Red<br>
-        <input type="radio" name="platypus_colour" value="yellow"> Yellow<br>
-        <input type="radio" name="platypus_colour" value="pink"> Pink<br>
-        <input type="radio" name="platypus_colour" value="darkblue"> Dark Blue<br>
-        <input type="radio" name="platypus_colour" value="purple"> Purple<br>
-        <input type="radio" name="platypus_colour" value="green"> Green<br>
-        <input type="radio" name="platypus_colour" value="test"> Real<br>
-        <br>
-        <br>
-        <br>
-        <button type="submit" class="btn btn-secondary" id="submitSignUp">
-            <span class="glyphicon glyphicon-save" aria-hidden="true">
-        </span>Sign up</button>
+        <div class="radiobtnblue">
+        <input type="radio" name="platypus_colour" value="blue" required> Blue</div>
+        <div class="radiobtnred">
+        <input type="radio" name="platypus_colour" value="red"> Red</div>
+        <div class="radiobtnyellow">
+        <input type="radio" name="platypus_colour" value="yellow"> Yellow</div>
+        <div class="radiobtnpink">
+        <input type="radio" name="platypus_colour" value="pink"> Pink</div>
+        <div class="radiobtndarkblue">
+        <input type="radio" name="platypus_colour" value="darkblue"> Dark Blue</div>
+        <div class="radiobtnpurple">
+        <input type="radio" name="platypus_colour" value="purple"> Purple</div>
+        <div class="radiobtngreen">
+        <input type="radio" name="platypus_colour" value="green"> Green</div>
+        <div class="radiobtnreal">
+        <input type="radio" name="platypus_colour" value="test"> Real</div>
+        <br><br>
+        <button type="submit" class="btn" id="submitSignUp">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true">
+        </span>  Sign up</button>
         </form>
     </div>
     </div>

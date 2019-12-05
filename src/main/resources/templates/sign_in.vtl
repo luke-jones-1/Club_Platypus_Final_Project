@@ -4,37 +4,37 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="../images/Favicon/PlatypusEmoji.ico" type="image/x-icon">
         <style>
-            .jumbotron {background-color: turquoise}
-
-            h1 {font-family: 'Roboto Slab', serif;}
-
-             p{font-family: 'Roboto Slab', serif;}
-
+            .jumbotron {background-color: turquoise; color: #234B46}
+            h1 {font-family: 'Roboto Slab', serif; color: #234B46;}
+             p{font-family: 'Roboto Slab', serif;color: #234B46}
              h4{font-family: 'Roboto Slab', serif;}
-
-            .form{font-family: 'Roboto Slab', serif;}
-
-            #submitSignIn{background-color: grey;}
+            .form {
+             margin: 5;
+             width: 150px;
+             font-family: 'Roboto Slab', serif;
+             padding-left:60px;
+             padding-top: 20px;
+             }
+            #submitSignIn{background-color: #D0D0D0;}
         </style>
     </head>
-
     <body>
         <div class="jumbotron">
             <h1>Welcome to CGI Platypi</h1>
-            <p>Sign in below</p>
+            <p>Please sign in below</p>
         </div>
-
         <div class="container-fluid">
             <div class="form">
                 <form action="/sign-in" method="post">
-                    Email: <input type="text" name="email"/>
-                    Password: <input type="text" name="password"/>
+                    Email: <input type="text" name="email" required>
                     <br>
                     <br>
+                    Password: <input type="password" name="password" required/>
                     <br>
-                    <button type="submit" class="btn btn-secondary" id="submitSignIn">
-                <span class="glyphicon glyphicon-save" aria-hidden="true">
-                </span>Sign in</button>
+                    <br>
+                    <button type="submit" class="btn" id="submitSignIn">
+                <span class="glyphicon glyphicon-log-in" aria-hidden="true">
+                </span>  Sign in</button>
                 </form>
             </div>
         </div>
