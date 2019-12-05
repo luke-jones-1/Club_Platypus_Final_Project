@@ -30,6 +30,7 @@
     .container {
     padding-left: 0px;
     padding-right: 0px;
+    height: 100vh
     }
     .container.jumbotron {
         padding-right: 5%;
@@ -95,10 +96,12 @@
 
     #send{
         font-family: 'Roboto Slab', serif;
-    font-size: 11px;
-    background-color: whitesmoke;
-    height: 7%;
-    width: 7%;
+        font-size: 11px;
+        background-color: whitesmoke;
+        height: 45px;
+        width: 7%;
+        margin-right: 24%;
+        float: right;
     }
 
     nav{
@@ -106,6 +109,8 @@
         width: 75%;
         overflow: hidden;
         overflow-y: scroll;
+    }
+    #navIdentifier{
     }
     #userlist{
         font-family: 'Roboto Slab', serif;
@@ -177,7 +182,6 @@
        margin: 0;
      }
      #emojiContainer{
-
      }
      .emojiKeyboard{
        width: 380px;
