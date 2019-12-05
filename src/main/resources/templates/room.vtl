@@ -29,17 +29,24 @@
         </div>
 
         <nav id="navIdentifier">
-           <!-- <div class="jumbotron" id="chatLog">
-                #if( $chatLog.isempty)
+           <div class="jumbotron" id="chatLog">
+               #if( $chatLog.isempty)
                     <p>its empty</p>
-                #else
+               #else
                     <!-- used to try to get visibility -->
-                #end
-                #foreach( $key in $chatLog.keySet() )
-                    <p>$key $chatLog.get($key)</p>
-                    <p>happiness noises</p>
-                #end
-            </div>-->
+               #end
+               #foreach( $key in $chatLog.keySet() )
+                    <article>
+                        <div class="media">
+                            <div class="media-body">
+                                <img class="align-self-start mr-3" id="avatarimg" src="/image/$chatLog.get($key).platypus_colourPlatypus.png">
+                                <b> $chatLog.get($key).getUsername()   $key.time_created</b>
+                                <h6 class="msgFormat">$key.content</h6>
+                            </div>
+                        </div>
+                    </article>
+               #end
+           </div>
         </nav>
         <div>
             <textarea id="message" placeholder="Type your message" class="form-control"></textarea>
