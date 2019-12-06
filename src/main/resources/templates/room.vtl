@@ -32,18 +32,13 @@
 
         <nav id="navIdentifier">
            <div class="jumbotron" id="chatLog">
-               #if( $chatLog.isempty)
-                    <p>its empty</p>
-               #else
-                    <!-- used to try to get visibility -->
-               #end
-               #foreach( $map in $chatLog )
+               #foreach($chat in $chatLog)
                     <article>
                         <div class="media">
                             <div class="media-body">
-                                <img class="align-self-start mr-3" id="avatarimg" src="/image/$map.user.platypus_colourPlatypus.png">
-                                <b> $map.user.getUsername()   $map.chat.time_created</b>
-                                <h6 class="msgFormat">$map.chat.content</h6>
+                                <img class="align-self-start mr-3" id="avatarimg" src="/image/$chat.platypus_colourPlatypus.png">
+                                <b> $chat.username   $chat.time_created</b>
+                                <h6 class="msgFormat">$chat.content</h6>
                             </div>
                         </div>
                     </article>

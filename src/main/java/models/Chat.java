@@ -25,4 +25,8 @@ public class Chat {
     public String getContent(){
         return content;
     }
+
+    public String getTime_created() {
+        return time_created;
+    }
 }

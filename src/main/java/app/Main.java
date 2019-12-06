@@ -71,7 +71,7 @@ public class Main {
             // user class from user id
                 User currentUser = userModel.fetchUserById(chatInstance.getUser_id().toString());
             // call broadcast message
-                chatLog.put("ChatUserMap", new ChatUserMap(chatInstance, currentUser));
+                chatLog.put("ChatUserMap", new PastChat(currentUser.getUsername(), chatInstance.getContent(), chatInstance.getTime_created(), currentUser.getPlatypus_colour()));
             }
             System.out.println(chatLog.keySet());
             return new ModelAndView(chatLog, "templates/room.vtl");

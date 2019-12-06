@@ -90,8 +90,8 @@ public class VelocityTemplateEngine extends TemplateEngine {
             StringWriter writer = new StringWriter();
 //            System.out.println("String writer: " + writer);
             template.merge(context, writer);
-//            System.out.println("String writer: " + writer);
-            System.out.println("template: " + template);
+            System.out.println("String writer: " + writer);
+//            System.out.println("template: " + template);
             return writer.toString();
         } else {
             throw new IllegalArgumentException("modelAndView must be of type java.util.Map");
