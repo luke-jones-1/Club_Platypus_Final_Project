@@ -24,14 +24,6 @@ public class PaddleChatWebSocketHandler {
 
     @OnWebSocketConnect
     public void onConnect(Session user) throws Exception {
-
-        // for loop for entire of log
-//        for (Chat chatinstance : log) {
-//            // user class from user id
-//            User currentuser = usermodel.fetchUserById(chatinstance.getUser_id().toString());
-//            // call broadcast message
-//            PaddleChat.broadcastMessage(currentuser, chatinstance.getContent()); // message from instance of chat inside log
-//        }
         PaddleChat.userUsernameMap.put(user, PaddleChat.currentUserClass); // adds an element to userUsernameMap
         PaddleChat.broadcastServerMessage(msg = (PaddleChat.userUsernameMap.get(user).getUsername() + " joined the Paddle"));
         PaddleChat.currentUserClass = null;

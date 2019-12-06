@@ -84,13 +84,13 @@ public class VelocityTemplateEngine extends TemplateEngine {
         if (model instanceof Map) {
 //            System.out.println("i passed");
             Map<?, ?> modelMap = (Map<?, ?>) model;
-//            System.out.println("modelMap: " + modelMap);
+            System.out.println("modelMap: " + modelMap);
             VelocityContext context = new VelocityContext(modelMap);
 //            System.out.println("context: " + context);
             StringWriter writer = new StringWriter();
 //            System.out.println("String writer: " + writer);
             template.merge(context, writer);
-//            System.out.println("String writer: " + writer);
+            System.out.println("String writer: " + writer);
 //            System.out.println("template: " + template);
             return writer.toString();
         } else {

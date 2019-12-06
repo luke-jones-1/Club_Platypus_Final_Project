@@ -8,10 +8,8 @@
         <link rel="stylesheet" type="text/css" href="../Styles/styles.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Room 1</title>
-        <!-- emoji keyboard -->
-         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-         <script src="emojiJquery.js"></script>
-
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="emojiJquery.js"></script>
     </head>
     <body>
     <div class="container">
@@ -34,18 +32,13 @@
 
         <nav id="navIdentifier">
            <div class="jumbotron" id="chatLog">
-               #if( $chatLog.isempty)
-                    <p>its empty</p>
-               #else
-                    <!-- used to try to get visibility -->
-               #end
-               #foreach( $key in $chatLog.keySet() )
+               #foreach($chat in $chatLog)
                     <article>
                         <div class="media">
                             <div class="media-body">
-                                <img class="align-self-start mr-3" id="avatarimg" src="/image/$chatLog.get($key).platypus_colourPlatypus.png">
-                                <b> $chatLog.get($key).getUsername()   $key.time_created</b>
-                                <h6 class="msgFormat">$key.content</h6>
+                                <img class="align-self-start mr-3" id="avatarimg" src="/image/$chat.platypus_colourPlatypus.png">
+                                <b> $chat.username   $chat.time_created</b>
+                                <h6 class="msgFormat">$chat.content</h6>
                             </div>
                         </div>
                     </article>
@@ -54,8 +47,7 @@
         </nav>
         <div>
             <textarea id="message" placeholder="Type your message" class="form-control"></textarea>
-            <button class="btn btn-secondary btn-xs" id="send"><span class="glyphicon glyphicon-edit" aria-hidden="true">
-        </span>  Send</button>
+            <button class="btn btn-secondary" id="send"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>  Send</button>
         </div>
         <div class="jumbotron  container" id="header">
             <!-- emoji keyboard -->
