@@ -61,7 +61,7 @@ public class Main {
 
 
         get("/room", (req, res) -> {
-            Map<Chat, User> chatLog = new HashMap<>();
+            Map chatLog = new HashMap();
             if (PaddleChat.currentUserClass == null){
                 res.redirect("/");
             }
@@ -71,9 +71,9 @@ public class Main {
             // user class from user id
                 User currentUser = userModel.fetchUserById(chatInstance.getUser_id().toString());
             // call broadcast message
-                chatLog.put(chatInstance, currentUser);
+                chatLog.put("ChatUserMap", new ChatUserMap(chatInstance, currentUser));
             }
-//            System.out.println(chats.keySet());
+            System.out.println(chatLog.keySet());
             return new ModelAndView(chatLog, "templates/room.vtl");
         }, new VelocityTemplateEngine());
 

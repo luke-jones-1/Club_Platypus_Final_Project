@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="../Styles/styles.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Room 1</title>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script src="emojiJquery.js"></script>
     </head>
     <body>
@@ -37,13 +37,13 @@
                #else
                     <!-- used to try to get visibility -->
                #end
-               #foreach( $key in $chatLog.keySet() )
+               #foreach( $map in $chatLog )
                     <article>
                         <div class="media">
                             <div class="media-body">
-                                <img class="align-self-start mr-3" id="avatarimg" src="/image/$chatLog.get($key).platypus_colourPlatypus.png">
-                                <b> $chatLog.get($key).getUsername()   $key.time_created</b>
-                                <h6 class="msgFormat">$key.content</h6>
+                                <img class="align-self-start mr-3" id="avatarimg" src="/image/$map.user.platypus_colourPlatypus.png">
+                                <b> $map.user.getUsername()   $map.chat.time_created</b>
+                                <h6 class="msgFormat">$map.chat.content</h6>
                             </div>
                         </div>
                     </article>
